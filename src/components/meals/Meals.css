@@ -1,0 +1,23 @@
+#mealPage {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 45%;
+}
+
+fieldset {
+    width: 4em;
+    display: flex;
+    flex-direction: column;
+    height: 2em;
+}
+
+#mealList {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mealListTitle {
+    background-color: #F2bf27; 
+}
