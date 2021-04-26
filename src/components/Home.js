@@ -4,7 +4,7 @@ export const DashBoard = () => {
 
     return (
         <>
-        <p>Hello world from hoem</p>
+        <p>Hello world from home</p>
         </>
     )
 }

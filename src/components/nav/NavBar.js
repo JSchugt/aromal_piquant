@@ -1,6 +1,6 @@
 import React from "react";
 import "./NavBar.css";
-import { Link, Route, Router, useHistory } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../logo.jpg";
 
