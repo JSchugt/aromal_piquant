@@ -2,7 +2,7 @@ import React from "react"
 import { MealCard } from "./MealCard"
 import "./Meals.css"
 
-
+// Create Static meal page until logic is futher filled out
 export const Meals = () => {
     return (<>
         <div>
