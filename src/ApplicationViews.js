@@ -2,6 +2,7 @@ import { Route } from "react-router"
 import { EventPlanner } from "./components/events/EventPlanner"
 import { DashBoard } from "./components/Home"
 import { Meals } from "./components/meals/Meals"
+import { Recipes } from "./components/recipes/RecipeList"
 
 
 export const ApplicationViews = () => {
@@ -17,7 +18,7 @@ export const ApplicationViews = () => {
                 <Meals />
             </Route>
             <Route exact path="/recipes">
-
+                <Recipes />
             </Route>
         </>
     )
