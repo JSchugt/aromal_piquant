@@ -29,11 +29,11 @@ export const NavBar = (props) => {
                 <Link className="nav-link" to="/events">Planner</Link>
               </Route>
               <Route>
-                <Link className="nav-link" to="/">Recipes</Link>
+                <Link className="nav-link" to="/recipes">Recipes</Link>
               </Route>
-              <Route>
+              {/* <Route>
                 <Link className="nav-link" to="/">Shopping</Link>
-              </Route>
+              </Route> */}
               <Route>
                 <Link className="nav-link" to="/">Logout</Link>
               </Route>
