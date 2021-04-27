@@ -1,0 +1,48 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Jeremiah Schugt",
+            "email": "j@j.com"
+        }
+    ],
+    "recipes": [
+        {
+            "id": 1,
+            "recipeName": "Burgers",
+            "ingredientsList": ["meat","buns"],
+            "instructions": ["cook","eat"],
+            "prepTime": 20,
+            "cookeTime": 80
+        }
+    ],
+    "events": [
+        {
+            "id": 1,
+            "userId": 1,
+            "mealDate": 1000
+        }
+    ],
+    "meals": [
+        {
+            "id": 1,
+            "mealName": "Sunday Brunch",
+            "userId": 1,
+            "recipeId": 1
+        }
+    ],
+    "eventMeals": [
+        {
+            "id": 1,
+            "mealId": 1,
+            "eventId": 1
+        }
+    ],
+    "mealRecipes": [
+        {
+            "id": 1,
+            "mealId": 1,
+            "recipeId": 1
+        }
+    ]
+}
