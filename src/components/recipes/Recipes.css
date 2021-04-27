@@ -9,3 +9,14 @@
 #recipeTitle {
     background-color: #F2bf27;
 }
+
+.recipeEditFields {
+    display:flex;
+    flex-direction: row;
+    width: fit-content
+}
+
+#recipe {
+    display: flex;
+    flex-direction: row;
+}

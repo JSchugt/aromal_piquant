@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { RecipeCard } from "./RecipeCards"
 import "./Recipes.css"
 
@@ -25,11 +26,16 @@ export const Recipes = () => {
                 <div className="recipeCard">
                     <RecipeCard />
                 </div>
-                <div className="recipeCard">
-                    <RecipeCard />
-                </div>
+                {/* Make Recipe selectable and based on recipe number */}
+                <Link to={`/recipes/1/edit`}>
+                    <div className="recipeCard">
+                        <RecipeCard />
+                    </div>
+                </Link>
             </div>
-            <button>Add A Recipe</button>
+            <Link to={`/recipes/1/edit`}>
+                <button>Add A Recipe</button>
+            </Link>
         </>
     )
 }
