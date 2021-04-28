@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "First Last",
+      "email": ""
+    }
+  ],
+  "recipes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "recipeName": "",
+      "ingredientsList": [
+        ""
+      ],
+      "instructions": [""],
+      "notes": "",
+      "prepTime": 0,
+      "cookTime": 0
+    }
+}
