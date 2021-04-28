@@ -6,6 +6,7 @@ import { RecipeEntryForm } from "./components/recipes/RecipeEntryFrom"
 import {RecipeEditForm} from "./components/recipes/RecipeEditForm"
 import { Recipes } from "./components/recipes/RecipeList"
 import { RecipeSearch } from "./components/recipes/RecipeSearch"
+import { RecipeCard } from "./components/recipes/RecipeCards"
 
 
 export const ApplicationViews = () => {
@@ -32,6 +33,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/recipes/:recipeId(\d+)/edit">
                 <RecipeEditForm />
+            </Route>
+            <Route exact path="/recipes/:recipeId(\d+)">
+                <RecipeCard />
             </Route>
         </>
     )

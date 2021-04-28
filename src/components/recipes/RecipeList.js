@@ -1,11 +1,19 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { RecipeCard } from "./RecipeCards"
 import "./Recipes.css"
+import { getRecipesByUser } from "../../modules/recipeManager"
 
 
 export const Recipes = () => {
+    const [recipes, setRecipes] = useState([])
+
+
+    useEffect(() => {
+        getRecipesByUser(1).then(response => { setRecipes(response) })
+    }, [])
     return (
+
         <>
             <div id="recipeTitle">
                 <h2>Recipes</h2>
@@ -17,23 +25,16 @@ export const Recipes = () => {
                 </fieldset>
             </div>
             <div>
-                <div className="recipeCard">
-                    <RecipeCard />
-                </div>
-                <div className="recipeCard">
-                    <RecipeCard />
-                </div>
-                <div className="recipeCard">
-                    <RecipeCard />
-                </div>
-                {/* Make Recipe selectable and based on recipe number */}
-                <Link to={`/recipes/1/edit`}>
-                    <div className="recipeCard">
-                        <RecipeCard />
-                    </div>
-                </Link>
+                {recipes.map(recipe => {
+                    return (<Link to={`/recipes/${recipe.id}`}>
+                        <div className="recipeCard">
+                            {recipe.recipeName}
+                        </div>
+                    </Link>)
+                })}
+
             </div>
-            <Link to={`/recipes/1/edit`}>
+            <Link to={`/recipes/create`}>
                 <button>Add A Recipe</button>
             </Link>
         </>

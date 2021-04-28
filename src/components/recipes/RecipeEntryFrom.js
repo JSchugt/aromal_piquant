@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router";
-import {createNewRecipe} from "../../modules/recipeManager"
+import {createNewRecipe, getRecipesByUser} from "../../modules/recipeManager"
 import "./Recipes.css"
 // import { IngredientsLister } from "./Ingredients";
 
@@ -76,11 +76,14 @@ export const RecipeEntryForm = () => {
             instructions: [...instructionList].map(item => { return item.instruction }),
             notes: notes,
             prepTime: prepTime,
-            cookeTime: cookTime
+            cookTime: cookTime,
+            userId: 1
         }
-        console.log(recipeObj)
+        // Save recipe in database
         createNewRecipe(recipeObj)
-        history.push("/recipes")
+        //Get the recipes from the data base
+        // then go to recipes main page
+        getRecipesByUser(1).then(()=> history.push("/recipes"))
     }
     return (
         <>

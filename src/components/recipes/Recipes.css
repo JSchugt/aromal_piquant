@@ -38,3 +38,21 @@ input {
 button{
     margin-bottom: 1em;
 }
+
+.recipeTopDisplay{
+    display:flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.recipeIngredientsDisplay {
+    background-color: #F2bf27;
+    margin-left: 4em;
+    min-width: 6em;
+    max-width: 12em;
+}
+.recipeInstructionsDisplay {
+    background-color: #ffffff;
+    min-width: 6em;
+    max-width: 12em;
+}
