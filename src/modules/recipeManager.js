@@ -13,3 +13,14 @@ export const createNewRecipe = (recObj) =>{
         body: JSON.stringify(recObj),
     }).then((res) => res.json())
 };
+
+export const getRecipesByUser = (id) => {
+    return fetch(`${API.baseUrl}:8088/recipes?userId=${id}`).then(res => res.json())
+}
+
+export const deleteRecipeById = (id) => {
+    return fetch(`${API.baseUrl}:8088/recipes/${id}`, {
+        method: "DELETE"
+
+    }).then(res => res.json())
+}

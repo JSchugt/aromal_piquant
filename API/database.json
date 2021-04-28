@@ -9,6 +9,7 @@
   "recipes": [
     {
       "id": 1,
+      "userId": 1,
       "recipeName": "Burgers",
       "ingredientsList": [
         "ground-beef",
@@ -21,92 +22,31 @@
         "cook",
         "eat"
       ],
-      "notes": "",
+      "notes": "Delicious",
       "prepTime": 20,
-      "cookeTime": 80
+      "cookTime": 80
     },
     {
-      "recipeName": "Meat Loaf",
+      "recipeName": "Nachos",
       "ingredientsList": [
-        "ground beef"
+        "Chips",
+        "Cheese"
       ],
       "instructions": [
-        "Oven 400",
-        "Cook for 1 hour"
+        "Melt Cheese",
+        "Pour On Chips"
       ],
-      "notes": "Delicious",
+      "notes": "Let cheese cool first",
       "prepTime": {
-        "prepHours": "4",
-        "prepMinutes": "0"
+        "prepHours": "0",
+        "prepMinutes": "1"
       },
-      "cookeTime": {
-        "cookHours": "1",
+      "cookTime": {
+        "cookHours": "0",
         "cookMinutes": "5"
       },
+      "userId": 1,
       "id": 2
-    },
-    {
-      "recipeName": "ham",
-      "ingredientsList": [
-        "prok"
-      ],
-      "instructions": [
-        "cook"
-      ],
-      "notes": "It's awesome",
-      "prepTime": {
-        "prepHours": "3",
-        "prepMinutes": "5"
-      },
-      "cookeTime": {
-        "cookHours": "6",
-        "cookMinutes": "4"
-      },
-      "id": 3
-    },
-    {
-      "recipeName": [
-        ""
-      ],
-      "ingredientsList": [
-        ""
-      ],
-      "instructions": [
-        ""
-      ],
-      "notes": [
-        ""
-      ],
-      "prepTime": {
-        "prepHours": 0,
-        "prepMinutes": 0
-      },
-      "cookeTime": {
-        "cookHours": 0,
-        "cookMinutes": 0
-      },
-      "id": 4
-    },
-    {
-      "recipeName": "meal 4",
-      "ingredientsList": [
-        ""
-      ],
-      "instructions": [
-        ""
-      ],
-      "notes": [
-        ""
-      ],
-      "prepTime": {
-        "prepHours": 0,
-        "prepMinutes": 0
-      },
-      "cookeTime": {
-        "cookHours": 0,
-        "cookMinutes": 0
-      },
-      "id": 5
     }
   ],
   "events": [

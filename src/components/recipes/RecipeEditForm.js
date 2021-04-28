@@ -26,6 +26,9 @@ export const RecipeEditForm = () => {
             <button>Save</button>
             <button>Delete</button>
             <button>Search</button>
+            <div>
+                <input type="text" defaultValue={recipe.recipeName}/>
+            </div>
             <div id="recipe">
                 <div>
                     ingredients: {ingredients.map((ingredient,index)=>{
@@ -47,6 +50,7 @@ export const RecipeEditForm = () => {
                     })}
                 </div>
             </div>
+            <input type="textarea" defaultValue={recipe.notes}/>
         </div>
     </>)
 }
