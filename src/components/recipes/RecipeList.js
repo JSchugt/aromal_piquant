@@ -34,7 +34,7 @@ export const Recipes = () => {
                 })}
 
             </div>
-            <Link to={`/recipes/1/edit`}>
+            <Link to={`/recipes/create`}>
                 <button>Add A Recipe</button>
             </Link>
         </>
