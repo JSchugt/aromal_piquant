@@ -13,10 +13,28 @@
 .recipeEditFields {
     display:flex;
     flex-direction: row;
-    width: fit-content
+    width: 100px;
 }
 
 #recipe {
     display: flex;
     flex-direction: row;
+}
+
+.addIngredient {
+    max-width: 20px;
+    background-color: #ffffff;
+}
+
+.entryFields {
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    margin-bottom: 0px;
+}
+
+button{
+    margin-bottom: 1em;
 }

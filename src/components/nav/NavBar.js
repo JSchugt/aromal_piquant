@@ -4,7 +4,7 @@ import { Link, Route } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../logo.jpg";
 
-export const NavBar = (props) => {
+export const NavBar = () => {
   return (
     <>
       <div id="headerTop">
