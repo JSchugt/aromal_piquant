@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { RecipeCard } from "./RecipeCards"
+// import { RecipeCard } from "./RecipeCards"
 import "./Recipes.css"
 import { getRecipesByUser } from "../../modules/recipeManager"
 
