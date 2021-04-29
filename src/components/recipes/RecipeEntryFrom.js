@@ -5,7 +5,6 @@ import "./Recipes.css"
 // import { IngredientsLister } from "./Ingredients";
 
 
-let itemCount = 0;
 export const RecipeEntryForm = () => {
     const history = useHistory()
     const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);

@@ -24,3 +24,14 @@ export const deleteRecipeById = (id) => {
 
     }).then(res => res.json())
 }
+
+export const updateRecipeById = (recipepObj) => {
+    fetch(`${API.baseUrl}:8088/recipes/${recipepObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(recipepObj)
+    }).then(res => res.json())
+
+}

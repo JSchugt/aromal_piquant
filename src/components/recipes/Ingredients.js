@@ -1,11 +1,7 @@
 import React from "react"
-import base from "../images/cuttingBoard.png"
 
 export const IngredientsLister = ({ Ingredients, index, handleOnChnage }) => {
-    let imgLink = base;
-    if(Ingredients !== ""){
-        imgLink=`https://spoonacular.com/cdn/ingredients_100x100/${Ingredients}.jpg`
-    }
+
     return (
         <>
             <form action="">

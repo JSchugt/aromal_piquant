@@ -7,12 +7,14 @@ import { deleteRecipeById, getRecipeById, getRecipesByUser } from "../../modules
 export const RecipeCard = () => {
     const { recipeId } = useParams()
     const [recipe, setRecipe] = useState([])
-    const [instructions, setInstructions] = useState([""])
+    const [instructions, setInstructions] = useState([])
     const [ingredients, setIngredients] = useState([""])
     const [cookTime, setCookTime] = useState([{}])
     const [prepTime, setPrepTime] = useState([{}])
+    const [recid, setRecId] = useState([])
     const history = useHistory()
     useEffect(() => {
+        setRecId(recipeId)
         getRecipeById(recipeId).then((recipeFromApi) => {
             setRecipe(recipeFromApi);
             setInstructions(recipeFromApi.instructions);
