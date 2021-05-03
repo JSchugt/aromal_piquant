@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { deleteRecipeById, getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
-import {userStorageKey} from "../auth/authSettings"
+import { userStorageKey } from "../auth/authSettings"
 
 
 export const RecipeCard = () => {
@@ -24,8 +24,8 @@ export const RecipeCard = () => {
             setPrepTime(recipeFromApi.prepTime);
         })
     }, [])
-    const handleDeleteRecipe = () =>{
-        deleteRecipeById(recipeId).then(()=> getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push("/recipes")))
+    const handleDeleteRecipe = () => {
+        deleteRecipeById(recipeId).then(() => getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push("/recipes")))
     }
     return (
         <>
@@ -37,7 +37,9 @@ export const RecipeCard = () => {
             <Link to={"/recipes/create"}>
                 <button>New Recipe</button>
             </Link>
-            <button>Search</button>
+            <Link to={"/recipes/search"}>
+                <button>Search</button>
+            </Link>
             <div>
                 <h2>{recipe.recipeName}</h2>
                 {/* Begining of ingredients and redcipes */}

@@ -8,6 +8,7 @@ import { Recipes } from "./components/recipes/RecipeList"
 import { RecipeSearch } from "./components/recipes/RecipeSearch"
 import { RecipeCard } from "./components/recipes/RecipeCards"
 import { MealDetails } from "./components/meals/MealDetails"
+import { MealEntryForm } from "./components/meals/MealEntryForm"
 
 
 export const ApplicationViews = () => {
@@ -21,6 +22,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/meals">
                 <Meals />
+            </Route>
+            <Route exact path="/meals/create">
+                <MealEntryForm />
             </Route>
             <Route exact path="/meals/:mealsId(\d+)">
                 <MealDetails />
