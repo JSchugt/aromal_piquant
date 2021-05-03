@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { getMealRecipeByMealId, getMealsById } from "../../modules/mealManager"
+import { deleteMealById, getMealRecipeByMealId, getMealsById } from "../../modules/mealManager"
 import { getMealRecipeById } from "../../modules/mealRecipeManager"
-
+import { deleteRecipeById } from "../../modules/recipeManager"
+import {userStorageKey} from "../auth/authSettings"
 
 export const MealDetails = () => {
     const { mealsId } = useParams()
@@ -17,9 +18,9 @@ export const MealDetails = () => {
             .then((responseFromAPi) => {
                 setMeals(responseFromAPi)
                 setMealName(responseFromAPi[0].meal.mealName)
-                setRecipe([...responseFromAPi.map((rec) => { 
+                setRecipe([...responseFromAPi.map((rec) => {
                     return rec.recipe
-                    })])
+                })])
             })
     }, [])
     const handleRecipeClick = (evt) => {
@@ -27,11 +28,18 @@ export const MealDetails = () => {
         history.push(`/recipes/${evt.target.id}`)
     }
 
+    const handleDeleteMeal = (evt) => {
+        evt.preventDefault()
+        deleteMealById(mealsId).then(()=>{history.push("/meals/")})
+    }
     return (<>
         {/* <h1>{meals.meal.mealName}</h1>
          */}
         <h1>{mealName}</h1>
-        {recipe.map( item => {
+        <button>Edit</button>
+        <button onClick={handleDeleteMeal}>Delete</button>
+
+        {recipe.map(item => {
             return <p id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
         })}
 

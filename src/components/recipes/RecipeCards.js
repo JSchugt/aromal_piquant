@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { deleteRecipeById, getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
+import {userStorageKey} from "../auth/authSettings"
 
 
 export const RecipeCard = () => {
@@ -24,7 +25,7 @@ export const RecipeCard = () => {
         })
     }, [])
     const handleDeleteRecipe = () =>{
-        deleteRecipeById(recipeId).then(()=> getRecipesByUser(1).then(()=> history.push("/recipes")))
+        deleteRecipeById(recipeId).then(()=> getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push("/recipes")))
     }
     return (
         <>
