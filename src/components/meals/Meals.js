@@ -15,9 +15,9 @@ export const Meals = () => {
         // let temp = tempMeals.map( x => {return [x.meal.mealName,(x.mealId)]})
         let temp = [...tempMeals]
         let out = []
-        
-        for(let i = 0; i < temp.length; i++){
-            if(!out.find(x => {return x.meal.mealName === temp[i].meal.mealName})){
+
+        for (let i = 0; i < temp.length; i++) {
+            if (!out.find(x => { return x.meal.mealName === temp[i].meal.mealName })) {
                 out.push(temp[i])
             }
         }
@@ -26,10 +26,29 @@ export const Meals = () => {
     // get the users recipes
     useEffect(() => {
         getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey))
-            .then((responseFromAPi) => { 
-                setUserMeals(consoliDateMeals([...responseFromAPi]) )})
+            .then((responseFromAPi) => {
+                setMeals(consoliDateMeals([...responseFromAPi]))
+                setUserMeals(consoliDateMeals([...responseFromAPi]))
+            })
     }, [])
-
+    const handleSearch = (evt) => {
+        evt.preventDefault()
+        console.log(meals, "meals")
+        console.log(userMeals, "userMeals")
+        let userInput = evt.target.value
+        console.log(userInput, "user input")
+        let search = []
+        if (userInput.length > 0) {
+            search = meals.filter(recipe => {
+                if (recipe.meal.mealName.toLowerCase().includes(userInput.toLowerCase(0))) {
+                    return recipe.meal.mealName
+                }
+            })
+            setUserMeals(search)
+        } else {
+            setUserMeals(meals)
+        }
+    }
     return (<>
         <div>
             <h2 id="mealListTitle">Meal List</h2>
@@ -37,7 +56,7 @@ export const Meals = () => {
         <div>
             <fieldset>
                 <label>Meal Search</label>
-                <input type="text"></input>
+                <input type="text" onChange={handleSearch}></input>
             </fieldset>
 
         </div>
