@@ -1,7 +1,10 @@
 import React from "react"
 
-export const MealCard = () => {
+export const MealCard = ({mealName})  => {
     return (<>
-        <p>Meal List Item</p>
+        <div className="plate">
+            <div>taco</div>
+        </div>
+
     </>)
 }
