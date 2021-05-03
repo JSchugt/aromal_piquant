@@ -14,12 +14,12 @@ export const Meals = () => {
     const [meals, setMeals] = useState([""])
     // const [mealsFromUser, setMealsFromUSer] = useState([])
     const consoliDateMeals = (tempMeals) => {
-        // let temp = tempMeals.map( x => {return [x.meal.mealName,(x.mealId)]})
+        // let temp = tempMeals.map( x => {return [x.mealName,(x.mealId)]})
         let temp = [...tempMeals]
         let out = []
 
         for (let i = 0; i < temp.length; i++) {
-            if (!out.find(x => { return x.meal.mealName === temp[i].meal.mealName })) {
+            if (!out.find(x => { return x.mealName === temp[i].mealName })) {
                 out.push(temp[i])
             }
         }
@@ -35,15 +35,12 @@ export const Meals = () => {
     }, [])
     const handleSearch = (evt) => {
         evt.preventDefault()
-        console.log(meals, "meals")
-        console.log(userMeals, "userMeals")
         let userInput = evt.target.value
-        console.log(userInput, "user input")
         let search = []
         if (userInput.length > 0) {
             search = meals.filter(recipe => {
-                if (recipe.meal.mealName.toLowerCase().includes(userInput.toLowerCase(0))) {
-                    return recipe.meal.mealName
+                if (recipe.mealName.toLowerCase().includes(userInput.toLowerCase(0))) {
+                    return recipe.mealName
                 }
             })
             setUserMeals(search)
@@ -54,6 +51,10 @@ export const Meals = () => {
     const handleMealOnClick = (evt) => {
         evt.preventDefault()
         history.push(`/meals/${evt.target.id}`)
+    }
+    const handleCreateMeal = (evt) =>{
+        evt.preventDefault()
+        history.push("/meals/create")
     }
     return (<>
         <div>
@@ -66,12 +67,13 @@ export const Meals = () => {
             </fieldset>
 
         </div>
-        {userMeals.map((meal) => {
+        {console.log(userMeals)}
+        { (userMeals !== null) ? userMeals.map((meal) => {
             return (<div>
-                <h2 key={"meal__"+meal.meal.id} id={meal.meal.id} onClick={handleMealOnClick}>{meal.meal.mealName}</h2>
+                <h2 required key={"meal__"+meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
             </div>)
-        })}
-        <button>Add A Meal</button>
+        }):""}
+        <button onClick={handleCreateMeal}>Add A Meal</button>
 
     </>)
 }

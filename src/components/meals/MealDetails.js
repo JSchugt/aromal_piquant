@@ -16,11 +16,14 @@ export const MealDetails = () => {
     useEffect(() => {
         getMealRecipeByMealId(mealsId)
             .then((responseFromAPi) => {
-                setMeals(responseFromAPi)
-                setMealName(responseFromAPi[0].meal.mealName)
-                setRecipe([...responseFromAPi.map((rec) => {
-                    return rec.recipe
-                })])
+                if(responseFromAPi.length >0 ){
+
+                    setMeals(responseFromAPi)
+                    setMealName(responseFromAPi[0].meal.mealName)
+                    setRecipe([...responseFromAPi.map((rec) => {
+                        return rec.recipe
+                    })])
+                }
             })
     }, [])
     const handleRecipeClick = (evt) => {
@@ -33,15 +36,15 @@ export const MealDetails = () => {
         deleteMealById(mealsId).then(()=>{history.push("/meals/")})
     }
     return (<>
-        {/* <h1>{meals.meal.mealName}</h1>
-         */}
+    
         <h1>{mealName}</h1>
         <button>Edit</button>
         <button onClick={handleDeleteMeal}>Delete</button>
-
-        {recipe.map(item => {
+        {console.log(recipe, "recipe in meal details")}
+        { (recipe.length >0)?(recipe.map(item => {
+            console.log(item, "item in meal details")
             return <p id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
-        })}
+        })):""}
 
     </>)
 

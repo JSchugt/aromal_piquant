@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 // import { RecipeCard } from "./RecipeCards"
 import "./Recipes.css"
 import { getRecipesByUser } from "../../modules/recipeManager"
-
+import {userStorageKey} from "../auth/authSettings"
 
 export const Recipes = () => {
     // used to display recipes and search results
@@ -14,7 +14,7 @@ export const Recipes = () => {
     const [baseRecipe, setBaseRecipe] = useState([])
 
     useEffect(() => {
-        getRecipesByUser(1).then(response => { 
+        getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(response => { 
             setRecipes(response) 
             setBaseRecipe(response)})
     }, [])

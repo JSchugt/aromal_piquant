@@ -1,3 +1,4 @@
+import { userStorageKey } from "../components/auth/authSettings.js"
 import { API } from "../Settings.js"
 
 export const getMealRecipeById = (id) => {
@@ -5,5 +6,35 @@ export const getMealRecipeById = (id) => {
 }
 
 export const getMealsRecipeByUserId = (id) => {
-    return fetch(`${API.baseUrl}:8088/mealRecipes?userId=${id}&_expand=meal&_expand=recipe`).then(res => res.json())
+    return fetch(`${API.baseUrl}:8088/meals?userId=${id}`)
+    .then(res => res.json())
+}
+
+export const createMeal = (mealNameFromCode) =>{
+    let mealObj = {
+        mealName: mealNameFromCode,
+        userId: sessionStorage.getItem(userStorageKey)
+    }
+    return fetch(`${API.baseUrl}:8088/meals`,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(mealObj),
+    }).then((res) => res.json())
+}
+
+export const createMealRecipe = (recipeIdFromCode, mealIdFromCode) => {
+    let recipeMeal = {
+        recipeId: parseInt(recipeIdFromCode),
+        mealId: mealIdFromCode.id,
+        userId: parseInt(sessionStorage.getItem(userStorageKey))
+    }
+    return fetch(`${API.baseUrl}:8088/mealRecipes`,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(recipeMeal),
+    }).then((res) => res.json())
 }

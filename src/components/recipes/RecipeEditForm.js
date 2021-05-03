@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import { getRecipeById, getRecipesByUser, deleteRecipeById, updateRecipeById } from "../../modules/recipeManager"
-import { InstructionsLister } from "./Instructions"
-import { IngredientsLister } from "./Ingredients"
+import {userStorageKey} from "../auth/authSettings"
 
 
 export const RecipeEditForm = () => {
@@ -31,7 +30,7 @@ export const RecipeEditForm = () => {
 
     //Deletes the current recipe based on the recipe from the use params
     const handleDeleteRecipe = () => {
-        deleteRecipeById(recipeId).then(() => getRecipesByUser(1).then(() => history.push("/recipes")))
+        deleteRecipeById(recipeId).then(() => getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push("/recipes")))
     }
     // handle input change
     // name is the form field that the information the input is comming from
@@ -89,7 +88,7 @@ export const RecipeEditForm = () => {
         //Get the recipes from the data base
         // then go to the recipe just editied
         updateRecipeById(recipeObj)
-        getRecipesByUser(1).then(()=> history.push(`/recipes/${recipeId}`))
+        getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push(`/recipes/${recipeId}`))
 
     }
     return (

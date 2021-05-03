@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router";
 import {createNewRecipe, getRecipesByUser} from "../../modules/recipeManager"
+import { userStorageKey } from "../auth/authSettings";
 import "./Recipes.css"
 // import { IngredientsLister } from "./Ingredients";
 
@@ -82,7 +83,7 @@ export const RecipeEntryForm = () => {
         createNewRecipe(recipeObj)
         //Get the recipes from the data base
         // then go to recipes main page
-        getRecipesByUser(1).then(()=> history.push("/recipes"))
+        getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push("/recipes"))
     }
     return (
         <>
