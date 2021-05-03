@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { getMealRecipeById, getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
 import { getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings"
@@ -7,6 +8,7 @@ import "./Meals.css"
 
 // Create Static meal page until logic is futher filled out
 export const Meals = () => {
+    const history = useHistory()
     let i = 0
     const [userMeals, setUserMeals] = useState([])
     const [meals, setMeals] = useState([""])
@@ -49,6 +51,10 @@ export const Meals = () => {
             setUserMeals(meals)
         }
     }
+    const handleMealOnClick = (evt) => {
+        evt.preventDefault()
+        history.push(`/meals/${evt.target.id}`)
+    }
     return (<>
         <div>
             <h2 id="mealListTitle">Meal List</h2>
@@ -62,7 +68,7 @@ export const Meals = () => {
         </div>
         {userMeals.map((meal) => {
             return (<div>
-                <h2>{meal.meal.mealName}</h2>
+                <h2 key={"meal__"+meal.meal.id} id={meal.meal.id} onClick={handleMealOnClick}>{meal.meal.mealName}</h2>
             </div>)
         })}
         <button>Add A Meal</button>
