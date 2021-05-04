@@ -29,7 +29,6 @@ export const createMeal = (mealNameFromCode) => {
 }
 
 export const createMealRecipe = (recipeIdFromCode, mealIdFromCode) => {
-    console.log(mealIdFromCode)
     let recipeMeal = {
         recipeId: parseInt(recipeIdFromCode),
         mealId: mealIdFromCode,
@@ -45,11 +44,9 @@ export const createMealRecipe = (recipeIdFromCode, mealIdFromCode) => {
 }
 
 export const deleteMealRecipeByMealAndRecipeId = (mealId, deleteItem) => {
-    console.log(deleteItem.id, "Recipe id in meal redcipe manager")
     return fetch(`${API.baseUrl}:8088/mealRecipes?mealId=${mealId}&recipeId=${deleteItem.id}`)
         .then(rec => rec.json())
         .then(parsed => {
-            console.log(parsed[0].id, "Parsed afeter dlete")
             return fetch(`${API.baseUrl}:8088/mealRecipes/${parsed[0].id}`,{
                 method:"DELETE"
             }).then(res=> res.json())

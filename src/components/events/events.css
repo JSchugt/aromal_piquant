@@ -3,7 +3,7 @@
 }
 
 #eventsList, #historicEvents {
-    background-color: #ffffff;
+    background-color: blue;
     border-radius: 10px;
     max-width: fit-content;
     padding-left:10px;
@@ -17,4 +17,9 @@
 }
 
 button {
-    margin-bottom: 3em;}
+    margin-bottom: 3em;
+}
+
+p{
+    color: black;
+}

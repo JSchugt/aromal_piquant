@@ -13,7 +13,3 @@ export const deleteMealById = (id) => {
         method: "DELETE"
     }).then(res => res.json())
 }
-
-export const updateMealById = (mealobj) => {
-    console.log(mealobj, "MEAL OBJECT")
-}
