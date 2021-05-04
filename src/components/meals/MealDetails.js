@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { deleteMealById, getMealRecipeByMealId, getMealsById } from "../../modules/mealManager"
-import { getMealRecipeById } from "../../modules/mealRecipeManager"
-import { deleteRecipeById } from "../../modules/recipeManager"
-import {userStorageKey} from "../auth/authSettings"
+import { Link } from "react-router-dom"
+import { deleteMealById, getMealRecipeByMealId } from "../../modules/mealManager"
+import { getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
+import { userStorageKey } from "../auth/authSettings"
 
 export const MealDetails = () => {
     const { mealsId } = useParams()
@@ -16,7 +16,7 @@ export const MealDetails = () => {
     useEffect(() => {
         getMealRecipeByMealId(mealsId)
             .then((responseFromAPi) => {
-                if(responseFromAPi.length >0 ){
+                if (responseFromAPi.length > 0) {
 
                     setMeals(responseFromAPi)
                     setMealName(responseFromAPi[0].meal.mealName)
@@ -33,18 +33,21 @@ export const MealDetails = () => {
 
     const handleDeleteMeal = (evt) => {
         evt.preventDefault()
-        deleteMealById(mealsId).then(()=>{history.push("/meals/")})
+        deleteMealById(mealsId)
+        .then(()=>{getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey))})
+        history.push("/meals")
     }
     return (<>
-    
+
         <h1>{mealName}</h1>
-        <button>Edit</button>
+        <Link to={`/meals/${mealsId}/edit`}>
+            <button>Edit</button>
+
+        </Link>
         <button onClick={handleDeleteMeal}>Delete</button>
-        {console.log(recipe, "recipe in meal details")}
-        { (recipe.length >0)?(recipe.map(item => {
-            console.log(item, "item in meal details")
+        { (recipe.length > 0) ? (recipe.map(item => {
             return <p id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
-        })):""}
+        })) : ""}
 
     </>)
 

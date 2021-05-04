@@ -62,3 +62,8 @@ fieldset {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.mealEditRecipeSelect {
+    display: flex;
+    flex-direction: column;
+}
