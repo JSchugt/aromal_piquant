@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { getMealRecipeById, getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
-import { getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
+import {  getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
 import { userStorageKey } from "../auth/authSettings"
-import { MealCard } from "./MealCard"
 import "./Meals.css"
 
 // Create Static meal page until logic is futher filled out
@@ -67,7 +65,6 @@ export const Meals = () => {
             </fieldset>
 
         </div>
-        {console.log(userMeals)}
         { (userMeals !== null) ? userMeals.map((meal) => {
             return (<div>
                 <h2 required key={"meal__"+meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>

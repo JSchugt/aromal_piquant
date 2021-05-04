@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react"
 import { userStorageKey } from "../auth/authSettings"
 import { getRecipesByUser } from "../../modules/recipeManager"
 import { createMeal, createMealRecipe } from "../../modules/mealRecipeManager"
+import { useHistory } from "react-router"
 export const MealEntryForm = () => {
-
-
-    const handleAddRecipe = () => {
-
-    }
+    const history = useHistory()
     const [recipeList, setRecipeList] = useState([{}])
     // used to display recipes and search results
     const [recipes, setRecipes] = useState([])
@@ -36,7 +33,6 @@ export const MealEntryForm = () => {
     }
     const handleInputChange = (evt, index) => {
         let temp = [...recipeList];
-        console.log(evt.target.id,"The id in handle change")
         temp[index] = evt.target.value;
         setRecipeList(temp)
     }
@@ -45,10 +41,8 @@ export const MealEntryForm = () => {
     }
     const handleSaveMeal = () => {
         createMeal(mealName).then(responseFromApi => {
-            console.log(recipeList, "Recipe list in entry form")
             recipeList.forEach(recipe => {
-                console.log(recipe, "recipe in meal entry form")
-                createMealRecipe(recipe, responseFromApi)
+                createMealRecipe(recipe, responseFromApi.id).then(()=>{history.push("/meals")})
             })
         })
 
@@ -61,12 +55,11 @@ export const MealEntryForm = () => {
                 onChange={handleSaveNameChange} />
             <button onClick={handleSaveMeal}>Save Meal</button>
         </div>
-        {console.log(recipeList, "in return before map")}
         {recipeList.map((x, i) => {
             return (
                 <>
                     <select onChange={evt => handleInputChange(evt, i)} placeholder="Select A Recipe">
-                        <option selecdted="true">Select A recipe</option>
+                        <option selected={true}>Select A recipe</option>
                         {recipes.map((recipe) => {
                             return <option key={recipe.id} id={recipe.id} value={recipe.id} >{recipe.recipeName}</option>
                         })}

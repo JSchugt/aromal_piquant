@@ -9,6 +9,7 @@ import { RecipeSearch } from "./components/recipes/RecipeSearch"
 import { RecipeCard } from "./components/recipes/RecipeCards"
 import { MealDetails } from "./components/meals/MealDetails"
 import { MealEntryForm } from "./components/meals/MealEntryForm"
+import { MealEdit } from "./components/meals/MealEdit"
 
 
 export const ApplicationViews = () => {
@@ -20,6 +21,7 @@ export const ApplicationViews = () => {
             <Route exact path="/events">
                 <EventPlanner />
             </Route>
+            {/* Meal Routing */}
             <Route exact path="/meals">
                 <Meals />
             </Route>
@@ -28,6 +30,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/meals/:mealsId(\d+)">
                 <MealDetails />
+            </Route>
+            <Route exact path="/meals/:mealsId(\d+)/edit">
+                <MealEdit />
             </Route>
             {/* Recipe routing */}
             <Route exact path="/recipes">
