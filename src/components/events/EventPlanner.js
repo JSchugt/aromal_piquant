@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { EventCard } from "./EventCard"
 import "./events.css"
 
@@ -23,16 +24,12 @@ export const EventPlanner = () => {
                     </div>
                     <div id="historicEvents">
                         <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
+
                     </div>
                 </div>
+                <Link to={"/events/create"}>
                     <button>Add Event</button>
+                </Link>
             </div>
         </>
     )
