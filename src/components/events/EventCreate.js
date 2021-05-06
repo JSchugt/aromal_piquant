@@ -3,7 +3,6 @@ import { useHistory } from "react-router"
 import { createEvent, createEventMeals, getMealsByUserId } from "../../modules/eventsManager"
 import { userStorageKey } from "../auth/authSettings"
 import { confirmAlert } from "react-confirm-alert"
-// import 'react-confirm-alert/src/react-confirm-alert.css';
 import "./events.css"
 export const EventCreate = () => {
     const date =new Date()
@@ -91,7 +90,7 @@ export const EventCreate = () => {
             {eventMeals.map((item, i) => {
                 return (<>
                     <div>
-                        <label>Meal</label>
+                        <label className="labelCreateEvent">Meal</label>
                         <div>
                             <select id="mealId" onChange={(evt) => handleEventMealsOnChange(evt, i)} >
                                 <option value="0">Select A Meal</option>

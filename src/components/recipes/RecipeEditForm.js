@@ -7,7 +7,7 @@ import {userStorageKey} from "../auth/authSettings"
 export const RecipeEditForm = () => {
     const { recipeId } = useParams()
     const history = useHistory();
-    const [recipe, setRecipe] = useState([])
+    // const [recipe, setRecipe] = useState([])
     const [instructions, setInstructions] = useState([""])
     const [ingredients, setIngredients] = useState([""])
     const [notes, setNotes] = useState([""])
@@ -18,7 +18,7 @@ export const RecipeEditForm = () => {
     //TODO: Look into refactoring this code
     useEffect(() => {
         getRecipeById(recipeId).then((recipeFromApi) => {
-            setRecipe(recipeFromApi);
+            // setRecipe(recipeFromApi);
             setInstructions(recipeFromApi.instructions);
             setIngredients(recipeFromApi.ingredientsList);
             setNotes(recipeFromApi.notes);
@@ -71,6 +71,18 @@ export const RecipeEditForm = () => {
             setMealName(evt.target.value)
         }
     }
+    const handleTimeOnChange = (evt) => {
+        if(evt.target.name === "cookHours" || evt.target.name === "cookMinutes"){
+            let temp = {...cookTime}
+            temp[evt.target.name] = evt.target.value
+            setCookTime(temp)
+
+        }else if (evt.target.name === "prepHours" || evt.target.name === "prepMinutes"  ){
+            let temp = {...prepTime}
+            temp[evt.target.name] = evt.target.value
+            setPrepTime(temp)
+        }
+    }
     //TODO: update user id based on logged in user
     // Handles saving recipe edit when the user selects save button
     const handleSaveRecipe = (evt) => {
@@ -81,7 +93,7 @@ export const RecipeEditForm = () => {
             notes: notes,
             prepTime: prepTime,
             cookTime: cookTime,
-            userId: 1,
+            userId: parseInt(sessionStorage.getItem(userStorageKey)),
             id: recipeId
         }
         // Save recipe in database
@@ -142,13 +154,13 @@ export const RecipeEditForm = () => {
             </div>
             <div>
                 Prep Time
-                <input type="number"  name="prepHours" min="0" max="99" defaultValue={prepTime.prepHours}></input>:
-                <input type="number"  name="prepMinutes" min="0" max="59" defaultValue={prepTime.prepMinutes}></input>
+                <input type="number" onChange={handleTimeOnChange} name="prepHours" min="0" max="99" defaultValue={prepTime.prepHours}></input>:
+                <input type="number" onChange={handleTimeOnChange} name="prepMinutes" min="0" max="59" defaultValue={prepTime.prepMinutes}></input>
             </div>
             <div>
                 Cook Time
-                <input type="number" name="cookHours" min="0" max="99" defaultValue={cookTime.cookHours}></input>:
-                <input type="number"  name="cookMinutes" min="0" max="59" defaultValue={cookTime.cookMinutes}></input>
+                <input type="number" onChange={handleTimeOnChange} name="cookHours" min="0" max="99" defaultValue={cookTime.cookHours}></input>:
+                <input type="number" onChange={handleTimeOnChange} name="cookMinutes" min="0" max="59" defaultValue={cookTime.cookMinutes}></input>
             </div>
             <div>
                 <textarea id="notes" name="notes" defaultValue={notes} onChange={handleNotesOnChange}></textarea>

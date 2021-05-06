@@ -80,6 +80,7 @@ export const MealEdit = () => {
                 hold.push(temp2[i])
             }
         }
+        updateMealById(mealsId, mealName)
         if (hold.length === 0) {
             history.push("/meals")
         } else {
@@ -98,9 +99,9 @@ export const MealEdit = () => {
     }
     // Meal Create Page
     return (<>
-        <h1>Edit Meal Page: {mealName}</h1>
+        <h1 className="editMealH1">Edit Meal: {mealName}</h1>
         <div>
-            <input type="text" defaultValue={mealName} id="mealName"
+            <input className="mealEditMealNameInput" type="text" defaultValue={mealName} id="mealName"
                 placeholder={mealName}
                 onChange={handleSaveNameChange} />
             <button onClick={handleSaveMeal}>Save Meal</button>
@@ -108,7 +109,7 @@ export const MealEdit = () => {
         {mealRecipes.map((mealRec, i) => {
             return (
                 <>
-                    <div id={mealRec.id} value={mealRec.recipeName} onClick={handleRecipeOnClick}>{mealRec.recipeName}</div>
+                    <div className="mealRecipeEditName" id={mealRec.id} value={mealRec.recipeName} onClick={handleRecipeOnClick}>{mealRec.recipeName}</div>
                     <div className="btn-box">
                         {mealRecipes.length !== 0 && <button
                             className="recipeRemoveButton"

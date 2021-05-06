@@ -41,7 +41,7 @@ export const MealEntryForm = () => {
     }
     const handleSaveMeal = () => {
         createMeal(mealName).then(responseFromApi => {
-            recipeList.forEach(recipe => {
+            recipeList.map(recipe => {
                 createMealRecipe(recipe, responseFromApi.id).then(()=>{history.push("/meals")})
             })
         })

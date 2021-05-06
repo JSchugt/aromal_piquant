@@ -12,6 +12,14 @@
     padding-left:10px;
     padding-right: 10px;
 }
+.allEvents {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 40%;
+}
+
+.allEvents div {
+flex-basis: 40%;}
 
 #eventsBody {
     display: flex;
@@ -154,4 +162,19 @@ body.react-confirm-alert-body-element {
 .custom-ui h1, p{
     color:rgba(000,000,000,.5)
     
+}
+
+input {
+  font-size: 2em;
+}
+
+.labelCreateEvent {
+  font-size: 3em;
+}
+
+.eventDetailsCard h4{
+  font-size: 2em;
+}
+.eventDetailsCard h2{
+  font-size: 3em;
 }

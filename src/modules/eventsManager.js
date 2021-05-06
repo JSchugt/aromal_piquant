@@ -98,3 +98,13 @@ export const delteEventById = (id) => {
     }).then((res) => { res.json() })
 
 }
+
+export const getSpotlighEventMealsByUserIs = (id)=>{
+    return fetch(`${API.baseUrl}:8088/eventMeals?userId=${id}&_expand=meal`)
+    .then((res)=> res.json())
+}
+
+export const getSpotLightEventByEventId = (id) => {
+    return fetch(`${API.baseUrl}:8088/eventMeals?eventId=${id}&_expand=meal&_expand=event`)
+    .then((res)=> res.json())
+}

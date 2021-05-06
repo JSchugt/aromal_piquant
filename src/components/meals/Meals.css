@@ -15,7 +15,8 @@ fieldset {
     width: 4em;
     display: flex;
     flex-direction: column;
-    height: 2em;
+    height: fit-content;
+
 }
 
 #mealList {
@@ -188,7 +189,42 @@ body.react-confirm-alert-body-element {
     }
   }
 
-.custom-ui h1, p{
+.custom-ui h1, .custom-ui p{
     color:rgba(255,255,255,.5)
     
+}
+
+.mealRecipeLister{
+  font-size: 3em;
+  color: black;
+}
+
+select {
+  font-size: 2em;
+}
+
+.mealRecipeEditName{
+  font-size: 4em;
+}
+
+.editMealH1{
+  font-size: 4em;
+}
+
+.mealEditMealNameInput {
+  font-size: 2em;
+}
+
+.mealListMealName{
+  font-size: 2em;
+  margin-top: .5em;
+}
+
+.mealSearchNameInput, .mealSearchNameLabel {
+  font-size: 2em;
+}
+
+.mealListDiv{
+  
+  margin-top:1em;
 }

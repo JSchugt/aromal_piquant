@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import {  getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
+import { getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
 import { userStorageKey } from "../auth/authSettings"
 import "./Meals.css"
 
@@ -50,7 +50,7 @@ export const Meals = () => {
         evt.preventDefault()
         history.push(`/meals/${evt.target.id}`)
     }
-    const handleCreateMeal = (evt) =>{
+    const handleCreateMeal = (evt) => {
         evt.preventDefault()
         history.push("/meals/create")
     }
@@ -60,17 +60,18 @@ export const Meals = () => {
         </div>
         <div>
             <fieldset>
-                <label>Meal Search</label>
-                <input type="text" onChange={handleSearch}></input>
+                <label className="mealSearchNameLabel">Meal Search</label>
+                <input className="mealSearchNameInput" type="text" onChange={handleSearch}></input>
             </fieldset>
 
         </div>
-        { (userMeals !== null) ? userMeals.map((meal) => {
-            return (<div>
-                <h2 required key={"meal__"+meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
-            </div>)
-        }):""}
-        <button onClick={handleCreateMeal}>Add A Meal</button>
-
+        <div className="mealListDiv">
+            {(userMeals !== null) ? userMeals.map((meal) => {
+                return (<div>
+                    <h2 required className="mealListMealName" key={"meal__" + meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
+                </div>)
+            }) : ""}
+            <button onClick={handleCreateMeal}>Add A Meal</button>
+        </div>
     </>)
 }

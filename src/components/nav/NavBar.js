@@ -12,7 +12,7 @@ export const NavBar = () => {
           <img className="logo" src={logo} alt="logo" />
         </div>
         <div>
-          <h1 id="appName">Aromal Piquant</h1>
+          <div id="appName">Aromal Piquant</div>
         </div>
       </div>
       <nav className="navbar">
@@ -35,7 +35,7 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/">Shopping</Link>
               </Route> */}
               <Route>
-                <Link className="nav-link" to="/">Logout</Link>
+                <Link className="nav-link" onClick={()=>{sessionStorage.clear()}}to="/login">Logout</Link>
               </Route>
             </li>
           </ul>

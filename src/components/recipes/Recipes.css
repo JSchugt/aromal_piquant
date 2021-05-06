@@ -4,6 +4,7 @@
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
+    font-size:3em;
 }
 
 #recipeTitle {
@@ -37,6 +38,7 @@ input {
 
 button{
     margin-bottom: 1em;
+    font-size: 2em;
 }
 
 .recipeTopDisplay{
@@ -49,10 +51,51 @@ button{
     background-color: #F2bf27;
     margin-left: 4em;
     min-width: 6em;
-    max-width: 12em;
+    max-width: fit-content;
+
 }
 .recipeInstructionsDisplay {
     background-color: #ffffff;
     min-width: 6em;
-    max-width: 12em;
+    max-width: fit-content;
+}
+
+.recipeCardNotes{
+    background-color: white;
+    max-width: 20em;
+}
+
+.recipeCardTime {
+    background-color: lightblue;
+    width: fit-content;
+}
+
+#cookBookSearch{
+    font-size:1em;
+    background-color: white;
+    max-width: fit-content;
+    margin-bottom: 0px;
+}
+
+.cookBookSearchDiv{
+    font-size:2em;
+    background-color: white;
+    max-width: fit-content;
+    margin-bottom: 4em;
+}
+
+.recipePrepCookTime{
+    font-size: 3em;
+}
+
+.recipeInternale{
+    font-size: 3em;
+}
+
+.entryTime{
+    font-size: 2em;
+}
+
+.entryNotes{
+    font-size: 2em;
 }

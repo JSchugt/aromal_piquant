@@ -46,7 +46,7 @@ export const MealDetails = () => {
         </Link>
         <button onClick={handleDeleteMeal}>Delete</button>
         { (recipe.length > 0) ? (recipe.map(item => {
-            return <p id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
+            return <p className={"mealRecipeLister"}id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
         })) : ""}
 
     </>)
