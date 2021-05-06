@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { SpotLight } from "../helpers/SpotLight"
 import { getEventsByUserId, getSpotlighEventMealsByUserIs } from "../modules/eventsManager"
 import { userStorageKey } from "./auth/authSettings"
-
+import "./Home.css"
 export const DashBoard = () => {
     const [events, setEvents] = useState([])
     const [spotLight, setSpotLight] = useState([])
@@ -36,7 +36,7 @@ export const DashBoard = () => {
             .then(responseFromApi => {
                 setSpotLight(responseFromApi)
             })
-    })
+    },[])
     const handleEventOnClick = (evt) => {
         evt.preventDefault()
         history.push(`/events/${evt.target.id}`)
@@ -46,7 +46,7 @@ export const DashBoard = () => {
         <>
             <div className="allEvents">
                 <div>
-                    <h2>Current And Pending Events</h2>
+                    <h1>SpotLight</h1>
                     <div onClick={handleEventOnClick} className="eventDatePlanner">
                         <h2 id={events.id}>
                             {events.eventDate}

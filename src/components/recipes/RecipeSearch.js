@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
-import { userStorageKey} from "../auth/authSettings"
+import {  getRecipesByUser } from "../../modules/recipeManager"
+import { userStorageKey } from "../auth/authSettings"
 
 
 
 export const RecipeSearch = () => {
-    const [selectedRecipe, setSelectedRecipe] = useState([{}])
     // used to display recipes and search results
     const [recipes, setRecipes] = useState([])
     // establish base line elements in search
@@ -37,22 +36,24 @@ export const RecipeSearch = () => {
         }
     }
     return (
-        
+
         <>
-        <h1>Recipe Search Page</h1>
-            <button>View Selected Recipe</button>
-            <button>Submit</button>
+            <h1>Recipe Search Page</h1>
+            {/* <button>View Selected Recipe</button> */}
+            {/* <button>Submit</button> */}
             <Link to="/recipes/create">
                 <button>Add New Recipe</button>
             </Link>
-            <div>
+            <div className="cookBookSearchDiv">
                 <label>Search Your Cook Book</label>
-                <input type="text" id="cookBookSearch" placeholder="Eneter Recipe Name" onChange={handleSearch}></input>
+                <div>
+                    <input type="text" id="cookBookSearch" placeholder="Enter Recipe Name" onChange={handleSearch}></input>
+                </div>
             </div>
-            <div>
+            {/* <div>
                 <label>Search The World</label>
                 <input type="text" id="apiRecipeSearch" placeholder="under construction" />
-            </div>
+            </div> */}
             <div>
                 {recipes.map(recipe => {
                     return (<Link to={`/recipes/${recipe.id}`}>

@@ -5,6 +5,8 @@ import { confirmAlert } from "react-confirm-alert"
 import { EventEditCard } from "./EventEditCard"
 import { userStorageKey } from "../auth/authSettings"
 import { EventEditAdd } from "./EventEditAdd"
+import "./events.css"
+
 
 export const EventEdit = () => {
     const history = useHistory()
@@ -25,8 +27,9 @@ export const EventEdit = () => {
                     })
             }
         })
-
     }, [])
+
+
     useEffect(() => {
         getMealsByUserId(sessionStorage.getItem(userStorageKey)).then(
             responseFromApi => {
@@ -51,20 +54,39 @@ export const EventEdit = () => {
     }
     const handleOnChangeTime = (meal, index, evt) => {
         let tempObj = {
-            mealId: meal.meal.id,
+            mealId: meal,
             eventId: meal.eventId,
             mealTime: evt.target.value,
         }
-        editEventMealTime(tempObj, meal.id).then(responseFromApi => {
-        })
+        editEventMealTime(tempObj, meal.id)
+        .then(responseFromApi => {})
     }
     const handleRemoveMeal = (id, index, evt) => {
-        eventEditRemoveMeal(index.id).then(() => {
-            getEventMealByEventId(eventId)
-                .then(responseFromApi => {
-                    setEvent(responseFromApi)
-                })
-        })
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-ui'>
+                        <h1>Are you sure?</h1>
+                        <p>Confirm You Want To Delete This Event</p>
+                        <p>This can't be undone</p>
+                        <button onClick={onClose}>No</button>
+                        <button
+                            onClick={() => {
+                                eventEditRemoveMeal(index.id).then(() => {
+                                    getEventMealByEventId(eventId)
+                                        .then(responseFromApi => {
+                                            setEvent(responseFromApi)
+                                        })
+                                })
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                        </button>
+                    </div>
+                );
+            }
+        });
     }
     const handleNewEventMealAddClick = (i) => {
         setNewEditMeals([...newEditMeals, {

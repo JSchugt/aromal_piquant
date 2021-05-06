@@ -59,26 +59,3 @@ export const EventPlanner = () => {
         </>
     )
 }
-
-
-// <div id="eventPlanner">
-//                 <div id="eventPlannerTitle">
-//                     <h2 >Event Planner</h2>
-//                 </div>
-//                 <div id="eventsBody">
-//                     <div id="eventsList">
-//                         <EventCard />
-//                         <EventCard />
-//                         <EventCard />
-//                         <EventCard />
-//                         <EventCard />
-//                         <EventCard />
-//                         <EventCard />
-//                     </div>
-//                     <div id="historicEvents">
-//                         <EventCard />
-
-//                     </div>
-//                 </div>
-
-//             </div>

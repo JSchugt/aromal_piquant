@@ -136,17 +136,16 @@ export const RecipeEntryForm = () => {
                 </div>
             </div>
             <div>
-                Prep Time
+                <div  className="entryTime">Prep Time</div>
                 <input type="number" onChange={handleTimeOnChange} name="prepHours" min="0" max="99" placeholder="Hours"></input>:
                 <input type="number" onChange={handleTimeOnChange} name="prepMinutes" min="0" max="59" placeholder="Minutes"></input>
             </div>
-            <div>
-                Cook Time
+            
+            <div  className="entryTime">Cook Time</div>
                 <input type="number" onChange={handleTimeOnChange} name="cookHours" min="0" max="99" placeholder="Hours"></input>:
                 <input type="number" onChange={handleTimeOnChange} name="cookMinutes" min="0" max="59" placeholder="Minutes"></input>
-            </div>
             <div>
-                <textarea id="notes" name="notes" placeholder="Note for recipe" onChange={handleNotesOnChange}></textarea>
+                <textarea className="entryNotes" id="notes" name="notes" placeholder="Note for recipe" onChange={handleNotesOnChange}></textarea>
             </div>
             <button onClick={handleSaveRecipe}>Save Recipe</button>
         </>

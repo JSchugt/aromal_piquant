@@ -26,8 +26,8 @@ export const EventDetails = () => {
                 return (
                     <div className='custom-ui'>
                         <h1>Are you sure?</h1>
-                        <p>Confirm You Want To Delete This Event</p>
-                        <p>This can't be undone</p>
+                        <p className="cUiP">Confirm You Want To Delete This Event</p>
+                        <p className="cUiP">This can't be undone</p>
                         <button onClick={onClose}>No</button>
                         <button
                             onClick={() => {

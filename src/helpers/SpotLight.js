@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { isCompositeComponent } from "react-dom/test-utils"
 import { getSpotLightEventByEventId } from "../modules/eventsManager"
 import { SpotLightRecipe } from "./SpotLightRecipe"
-
+import "../components/Home.css"
 export const SpotLight = ({eventMeal}) => {
     const [spotLightMeal, setSpotLightMeal] = useState([])
     const getEarliest = (mealObj) =>{
@@ -20,7 +19,6 @@ export const SpotLight = ({eventMeal}) => {
             })
     }, [])
     return (<>
-        <h2>SPOT LIGHT</h2>
         {spotLightMeal.map(item => {
             return (<>
             <div>

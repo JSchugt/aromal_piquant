@@ -12,10 +12,8 @@ export const RecipeCard = () => {
     const [ingredients, setIngredients] = useState([""])
     const [cookTime, setCookTime] = useState([{}])
     const [prepTime, setPrepTime] = useState([{}])
-    const [recid, setRecId] = useState([])
     const history = useHistory()
     useEffect(() => {
-        setRecId(recipeId)
         getRecipeById(recipeId).then((recipeFromApi) => {
             setRecipe(recipeFromApi);
             setInstructions(recipeFromApi.instructions);
@@ -50,7 +48,7 @@ export const RecipeCard = () => {
                         {
                             instructions.map((item, index) => {
                                 return (
-                                    <div>
+                                    <div className="recipeInternale">
                                         Step {(index + 1)}: {item}
                                     </div>
                                 )
@@ -61,7 +59,7 @@ export const RecipeCard = () => {
                         <h3>Ingredients:</h3>
                         {ingredients.map((item, index) => {
                             return (
-                                <div>
+                                <div className="recipeInternale">
                                     {(index + 1)}.  {item}
                                 </div>
                             )
@@ -69,14 +67,16 @@ export const RecipeCard = () => {
                     </div>
                 </div>
                 {/* End of ingredients and instructions */}
-                <h3>Notes:</h3>
-                <div>
+                <div className="recipeCardNotes">
+                    <h3>Notes:</h3>
                     {recipe.notes}
                 </div>
-                <h3>Prep Time</h3>
-                <div>{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
-                <h3>Cook Time</h3>
-                <div>{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
+                <div className="recipeCardTime">
+                    <h3>Prep Time</h3>
+                    <div className="recipePrepCookTime">{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
+                    <h3>Cook Time</h3>
+                    <div className="recipePrepCookTime">{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
+                </div>
             </div>
         </>
     )
