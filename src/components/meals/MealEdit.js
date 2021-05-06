@@ -5,7 +5,6 @@ import { createMeal, createMealRecipe, deleteMealRecipeByMealAndRecipeId, getMea
 import { useHistory, useParams } from "react-router"
 import { deleteMealById, getMealsById, updateMealById } from "../../modules/mealManager"
 import { confirmAlert } from "react-confirm-alert"
-// import 'react-confirm-alert/src/react-confirm-alert.css';
 import "./Meals.css"
 export const MealEdit = () => {
     const history = useHistory()
