@@ -12,6 +12,14 @@
     padding-left:10px;
     padding-right: 10px;
 }
+.allEvents {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 40%;
+}
+
+.allEvents div {
+flex-basis: 40%;}
 
 #eventsBody {
     display: flex;
