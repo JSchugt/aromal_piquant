@@ -11,7 +11,8 @@ import { MealDetails } from "./components/meals/MealDetails"
 import { MealEntryForm } from "./components/meals/MealEntryForm"
 import { MealEdit } from "./components/meals/MealEdit"
 import { EventCreate } from "./components/events/EventCreate"
-
+import { EventDetails } from "./components/events/EventDetails"
+import { EventEdit }  from "./components/events/EventEdit"
 
 export const ApplicationViews = () => {
     return (
@@ -21,6 +22,12 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/events">
                 <EventPlanner />
+            </Route>
+            <Route exact path="/events/:eventId(\d+)">
+                <EventDetails />
+            </Route>
+            <Route exact path="/events/:eventId(\d+)/edit">
+                <EventEdit />
             </Route>
             <Route exact path="/events/create">
                 <EventCreate />

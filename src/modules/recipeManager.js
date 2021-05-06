@@ -10,7 +10,7 @@ export const createNewRecipe = (recObj) =>{
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(recObj),
+        body: JSON.stringify(recObj)
     }).then((res) => res.json())
 };
 

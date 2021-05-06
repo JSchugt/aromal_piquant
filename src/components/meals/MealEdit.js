@@ -56,8 +56,8 @@ export const MealEdit = () => {
                 );
             }
         });
-
     }
+
     const handleRemoveNewRecipeClick = index => {
         const temp = [...recipeList];
 
