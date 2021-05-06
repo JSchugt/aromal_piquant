@@ -35,7 +35,7 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/">Shopping</Link>
               </Route> */}
               <Route>
-                <Link className="nav-link" to="/">Logout</Link>
+                <Link className="nav-link" onClick={()=>{sessionStorage.clear()}}to="/login">Logout</Link>
               </Route>
             </li>
           </ul>

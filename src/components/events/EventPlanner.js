@@ -41,11 +41,13 @@ export const EventPlanner = () => {
         <>
             <div className="allEvents">
                 <div>
+                    <h2>Current And Pending Events</h2>
                     {events.map(evt => {
                         return <div onClick={handleEventOnClick} className="eventDatePlanner"><h2 id={evt.id}>{evt.eventDate}</h2></div>
                     })}
                 </div>
                 <div>
+                    <h2>Historic Events</h2>
                 {historicEvents.map(evt3 => {
                         return <div onClick={handleEventOnClick} className="eventDatePlanner"><h2 id={evt3.id}>{evt3.eventDate}</h2></div>
                     })}

@@ -50,7 +50,7 @@ export const RecipeSearch = () => {
                 <input type="text" id="cookBookSearch" placeholder="Eneter Recipe Name" onChange={handleSearch}></input>
             </div>
             <div>
-                <label>Search The Worsd</label>
+                <label>Search The World</label>
                 <input type="text" id="apiRecipeSearch" placeholder="under construction" />
             </div>
             <div>
