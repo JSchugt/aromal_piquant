@@ -8,9 +8,16 @@ import {userStorageKey} from "../auth/authSettings"
 export const EventPlanner = () => {
     const [events, setEvents] = useState([])
     const history = useHistory()
+    const getSoonest = (eventsToBeSorted) => {
+        let sorted = eventsToBeSorted.sort(
+            (currentEntry, nextEntry) =>
+                Date.parse(currentEntry.eventDate) - Date.parse(nextEntry.eventDate)
+        )
+        return [...sorted]
+    }
     useEffect(()=>{
         getEventsByUserId(sessionStorage.getItem(userStorageKey))
-        .then(responseFromApi => {setEvents(responseFromApi)})
+        .then(responseFromApi => {setEvents(getSoonest(responseFromApi))})
     },[])
     const handleEventOnClick =(evt)=>{
         evt.preventDefault()

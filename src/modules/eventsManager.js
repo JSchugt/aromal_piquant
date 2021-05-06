@@ -91,3 +91,10 @@ export const updateEventEventMeals = (eventMealObj) => {
         body: JSON.stringify(sendObj)
     }).then((res) => res.json())
 }
+
+export const delteEventById = (id) => {
+    return fetch(`${API.baseUrl}:8088/events/${id}`, {
+        method: "DELETE"
+    }).then((res) => { res.json() })
+
+}
