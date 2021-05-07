@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router";
+import { cookTimeToString, ingredientInstructToString, ingredientToString, instructToString, prepTimeToStraing } from "../../helpers/measurements";
 import {createNewRecipe, getRecipesByUser} from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings";
 import "./Recipes.css"
@@ -70,14 +71,15 @@ export const RecipeEntryForm = () => {
         }
     }
     const handleSaveRecipe = (evt) => {
+
         const recipeObj = {
             recipeName: mealName,
-            ingredientsList: [...ingredientList].map(item => { return item.ingredient }),
-            instructions: [...instructionList].map(item => { return item.instruction }),
+            ingredientsList: ingredientToString([...ingredientList]),
+            instructions: instructToString([...instructionList]),
             notes: notes,
-            prepTime: prepTime,
-            cookTime: cookTime,
-            userId: 1
+            prepTime: prepTimeToStraing(prepTime),
+            cookTime:  cookTimeToString(cookTime),
+            userId: parseInt(sessionStorage.getItem(userStorageKey))
         }
         // Save recipe in database
         createNewRecipe(recipeObj)

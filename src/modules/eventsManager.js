@@ -100,7 +100,7 @@ export const delteEventById = (id) => {
 }
 
 export const getSpotlighEventMealsByUserIs = (id)=>{
-    return fetch(`${API.baseUrl}:8088/eventMeals?userId=${id}&_expand=meal`)
+    return fetch(`${API.baseUrl}:8088/eventMeals?_expand=meal&userId${id}`)
     .then((res)=> res.json())
 }
 

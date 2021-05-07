@@ -87,7 +87,9 @@ button{
 .recipePrepCookTime{
     font-size: 3em;
 }
-
+.recipePrepCookTime2 {
+    font-size: 4em;
+}
 .recipeInternale{
     font-size: 3em;
 }
@@ -97,5 +99,14 @@ button{
 }
 
 .entryNotes{
+    font-size: 2em;
+}
+
+.recipeSearchLabel{
+    font-size: 2.5em;
+}
+
+#notes {
+    min-width: 40em;
     font-size: 2em;
 }

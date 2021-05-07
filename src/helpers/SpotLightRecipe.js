@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getMealAndRecipeByMealId } from "../modules/mealRecipeManager"
 import "../components/Home.css"
+import { splitInstructionsIngrendiens, splitTime } from "./measurements"
 
 
 export const SpotLightRecipe = ({ recipe }) => {
@@ -14,16 +15,21 @@ export const SpotLightRecipe = ({ recipe }) => {
         getMealAndRecipeByMealId(recipe.id).then(responseFromApi => {
             responseFromApi.map(recipe => {
                 setRecipeList(recipe.recipe)
-                setIngredientList(recipe.recipe.ingredientsList.map(item => {
+                setIngredientList([...splitInstructionsIngrendiens(recipe.recipe.ingredientsList)].map(item => {
                     return item
                 }))
-                setInstructionList(recipe.recipe.instructions.map(item => {
+                setInstructionList([...splitInstructionsIngrendiens(recipe.recipe.instructions)].map(item => {
                     return item
                 }))
-                setCookTime(recipe.recipe.cookTime)
-                setPrepTime(recipe.recipe.prepTime)
+                setCookTime({
+                    cookHours: splitTime(recipe.recipe.cookTime)[0],
+                    cookMinutes: splitTime(recipe.recipe.cookTime)[1]    
+                })
+                setPrepTime({
+                    prepHours: splitTime(recipe.recipe.prepTime)[0],
+                    prepMinutes: splitTime(recipe.recipe.prepTime)[1]
+                })
                 setNotes(recipe.recipe.notes)
-                return true
             })
         })
     }, [])
@@ -33,12 +39,12 @@ export const SpotLightRecipe = ({ recipe }) => {
         <div className="spotlight-recipe-instruct-ingred">
             <div>
             {ingredientList.map((item, i) => {
-                return <div className="ingredient-Instruction-Spot-Light">Ingredient {(i + 1)}:{item}</div>
+                return <div key={`ingredient__${i}`}className="ingredient-Instruction-Spot-Light">Ingredient {(i + 1)}:{item}</div>
             })}
             </div>
             <div>
             {instructionList.map((item, i) => {
-                return <div className="ingredient-Instruction-Spot-Light">Step {(i + 1)}:{item}</div>
+                return <div  key={`instruction__${i}`}className="ingredient-Instruction-Spot-Light">Step {(i + 1)}:{item}</div>
             })}
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router"
 import { Link } from "react-router-dom"
+import { splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
 import { deleteRecipeById, getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings"
 
@@ -16,10 +17,18 @@ export const RecipeCard = () => {
     useEffect(() => {
         getRecipeById(recipeId).then((recipeFromApi) => {
             setRecipe(recipeFromApi);
-            setInstructions(recipeFromApi.instructions);
-            setIngredients(recipeFromApi.ingredientsList);
+            setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+            setIngredients(splitInstructionsIngrendiens(recipeFromApi.ingredientsList));
             setCookTime(recipeFromApi.cookTime);
             setPrepTime(recipeFromApi.prepTime);
+            setCookTime({
+                cookHours: 10,//[...splitTime(recipeFromApi.cookTime)],
+                cookMinutes: 5// [...splitTime(recipeFromApi.cookTime)]
+            });
+            setPrepTime( {
+                prepHours: 6,// splitTime(recipeFromApi.prepTime),
+                prepMinutes:3// splitTime(recipeFromApi.prepTime) 
+            });
         })
     }, [])
     const handleDeleteRecipe = () => {
@@ -28,7 +37,7 @@ export const RecipeCard = () => {
     return (
         <>
             <button onClick={handleDeleteRecipe}>Delete</button>
-            <button>Select</button>
+            {/* <button>Select</button> */}
             <Link to={`/recipes/${recipeId}/edit`}>
                 <button>Edit</button>
             </Link>
@@ -71,9 +80,9 @@ export const RecipeCard = () => {
                     <h3>Notes:</h3>
                     {recipe.notes}
                 </div>
-                <div className="recipeCardTime">
                     <h3>Prep Time</h3>
                     <div className="recipePrepCookTime">{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
+                <div className="recipeCardTime">
                     <h3>Cook Time</h3>
                     <div className="recipePrepCookTime">{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
                 </div>

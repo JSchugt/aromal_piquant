@@ -19,14 +19,14 @@ export const SpotLight = ({eventMeal}) => {
             })
     }, [])
     return (<>
-        {spotLightMeal.map(item => {
+        {spotLightMeal.map((item,i) => {
             return (<>
-            <div>
-                <h3>{item.meal.mealName}</h3>
-                <h4>{item.mealTime}</h4>
+            <div key={"spotligh__"+i}>
+                <h3 key={"spotLightH3__"+i}>{item.meal.mealName}</h3>
+                <h4 key={"spotLightH4__"+i}>{item.mealTime}</h4>
             </div>
             <SpotLightRecipe 
-            key={item.id}
+            key={"key_spot_item"+item.id}
             recipe={item}
             />
             </>)

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
+import { cookTimeToString, ingredientToString, instructToString, prepTimeToStraing, splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
 import { getRecipeById, getRecipesByUser, deleteRecipeById, updateRecipeById } from "../../modules/recipeManager"
 import {userStorageKey} from "../auth/authSettings"
 
@@ -19,12 +20,18 @@ export const RecipeEditForm = () => {
     useEffect(() => {
         getRecipeById(recipeId).then((recipeFromApi) => {
             // setRecipe(recipeFromApi);
-            setInstructions(recipeFromApi.instructions);
-            setIngredients(recipeFromApi.ingredientsList);
+            setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+            setIngredients(splitInstructionsIngrendiens(recipeFromApi.ingredientsList));
             setNotes(recipeFromApi.notes);
             setMealName(recipeFromApi.recipeName);
-            setCookTime(recipeFromApi.cookTime);
-            setPrepTime(recipeFromApi.prepTime);
+            setCookTime({
+                cookHours: splitTime(recipeFromApi.cookTime)[0],
+                cookMinutes: splitTime(recipeFromApi.cookTime)[1]
+            });
+            setPrepTime( {
+                prepHours: splitTime(recipeFromApi.prepTime)[0],
+                prepMinutes: splitTime(recipeFromApi.prepTime)[1] 
+            });
         })
     }, [])
 
@@ -86,13 +93,14 @@ export const RecipeEditForm = () => {
     //TODO: update user id based on logged in user
     // Handles saving recipe edit when the user selects save button
     const handleSaveRecipe = (evt) => {
+
         const recipeObj = {
             recipeName: mealName,
-            ingredientsList: [...ingredients],
-            instructions: [...instructions],
+            ingredientsList: ingredients.join("_-_-_-_"),
+            instructions: instructions.join("_-_-_-_"),
             notes: notes,
-            prepTime: prepTime,
-            cookTime: cookTime,
+            prepTime: prepTimeToStraing(prepTime),
+            cookTime:  cookTimeToString(cookTime),
             userId: parseInt(sessionStorage.getItem(userStorageKey)),
             id: recipeId
         }
@@ -153,12 +161,12 @@ export const RecipeEditForm = () => {
                 </div>
             </div>
             <div>
-                Prep Time
+                <div className="recipePrepCookTime">Prep Time</div>
                 <input type="number" onChange={handleTimeOnChange} name="prepHours" min="0" max="99" defaultValue={prepTime.prepHours}></input>:
                 <input type="number" onChange={handleTimeOnChange} name="prepMinutes" min="0" max="59" defaultValue={prepTime.prepMinutes}></input>
             </div>
             <div>
-                Cook Time
+                <div className="recipePrepCookTime">Cook Time</div>
                 <input type="number" onChange={handleTimeOnChange} name="cookHours" min="0" max="99" defaultValue={cookTime.cookHours}></input>:
                 <input type="number" onChange={handleTimeOnChange} name="cookMinutes" min="0" max="59" defaultValue={cookTime.cookMinutes}></input>
             </div>
