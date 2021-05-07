@@ -48,7 +48,7 @@ export const Login = () => {
                     <h1>Aromal Piquant</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                        <label id="email" htmlFor="inputEmail"> Email address </label>
                         <input type="email"
                             id="email"
                             className="form-control"
@@ -57,15 +57,15 @@ export const Login = () => {
                             value={loginUser.email}
                             onChange={handleInputChange} />
                     </fieldset>
-                    <fieldset>
-                        <button type="submit">
+                    <fieldset id="emailSubmit">
+                        <button  type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Register for an account</Link>
+                <Link id="registerAccount" to="/register">Register for an account</Link>
             </section>
         </main>
     )
