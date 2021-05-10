@@ -19,15 +19,13 @@ export const RecipeCard = () => {
             setRecipe(recipeFromApi);
             setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
             setIngredients(splitInstructionsIngrendiens(recipeFromApi.ingredientsList));
-            setCookTime(recipeFromApi.cookTime);
-            setPrepTime(recipeFromApi.prepTime);
             setCookTime({
-                cookHours: 10,//[...splitTime(recipeFromApi.cookTime)],
-                cookMinutes: 5// [...splitTime(recipeFromApi.cookTime)]
+                cookHours: splitTime(recipeFromApi.cookTime)[0],
+                cookMinutes: splitTime(recipeFromApi.cookTime)[1]
             });
-            setPrepTime( {
-                prepHours: 6,// splitTime(recipeFromApi.prepTime),
-                prepMinutes:3// splitTime(recipeFromApi.prepTime) 
+            setPrepTime({
+                prepHours: splitTime(recipeFromApi.prepTime)[0],
+                prepMinutes: splitTime(recipeFromApi.prepTime)[1]
             });
         })
     }, [])
@@ -46,33 +44,40 @@ export const RecipeCard = () => {
             </Link>
             <Link to={"/recipes/search"}>
                 <button>Search</button>
+                {/* 🔍 */}
             </Link>
             <div>
                 <h2>{recipe.recipeName}</h2>
                 {/* Begining of ingredients and redcipes */}
                 <div className="recipeTopDisplay">
-
+                
                     <div className="recipeInstructionsDisplay">
                         <h3>Instructions:</h3>
-                        {
-                            instructions.map((item, index) => {
-                                return (
-                                    <div className="recipeInternale">
-                                        Step {(index + 1)}: {item}
-                                    </div>
-                                )
+                        {<ol>
+                            {instructions.map((item, index) => {
+                                if (item !== "") {
+                                    return (
+                                        <li className="recipeInternale">
+                                            {item}
+                                        </li>
+                                    )
+                                }
                             })
-                        }
+                            }</ol>}
                     </div>
                     <div className="recipeIngredientsDisplay">
                         <h3>Ingredients:</h3>
-                        {ingredients.map((item, index) => {
-                            return (
-                                <div className="recipeInternale">
-                                    {(index + 1)}.  {item}
-                                </div>
-                            )
-                        })}
+                        <ol className="recipeInternale">
+                            {ingredients.map((item, index) => {
+                                if (item !== "") {
+                                    return (
+                                        <li >
+                                            {item}
+                                        </li>
+                                    )
+                                }
+                            })}
+                        </ol>
                     </div>
                 </div>
                 {/* End of ingredients and instructions */}
@@ -80,9 +85,9 @@ export const RecipeCard = () => {
                     <h3>Notes:</h3>
                     {recipe.notes}
                 </div>
+                <div className="recipeCardTime">
                     <h3>Prep Time</h3>
                     <div className="recipePrepCookTime">{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
-                <div className="recipeCardTime">
                     <h3>Cook Time</h3>
                     <div className="recipePrepCookTime">{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
                 </div>

@@ -5,7 +5,7 @@ import { createMeal, createMealRecipe } from "../../modules/mealRecipeManager"
 import { useHistory } from "react-router"
 export const MealEntryForm = () => {
     const history = useHistory()
-    const [recipeList, setRecipeList] = useState([{}])
+    const [recipeList, setRecipeList] = useState(["0"])
     // used to display recipes and search results
     const [recipes, setRecipes] = useState([])
     // establish base line elements in search
@@ -42,9 +42,13 @@ export const MealEntryForm = () => {
     const handleSaveMeal = () => {
         createMeal(mealName).then(responseFromApi => {
             recipeList.map(recipe => {
-                createMealRecipe(recipe, responseFromApi.id).then(()=>{history.push("/meals")})
-            })
-        })
+
+                if (recipe !== 0 && recipe !== "0" && recipe !== undefined) {
+                    return createMealRecipe(recipe, responseFromApi.id)
+                }
+            }
+            )
+        }).then(() => { history.push("/meals") })
 
     }
     // Meal Create Page
