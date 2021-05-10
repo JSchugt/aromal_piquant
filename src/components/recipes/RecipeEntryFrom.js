@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router";
-import { cookTimeToString, ingredientInstructToString, ingredientToString, instructToString, prepTimeToStraing } from "../../helpers/measurements";
+import { cookTimeToString,  ingredientToString, instructToString, prepTimeToStraing } from "../../helpers/measurements";
 import {createNewRecipe, getRecipesByUser} from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings";
 import "./Recipes.css"

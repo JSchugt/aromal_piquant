@@ -68,6 +68,7 @@ export const EventCreate = () => {
                             createEventMeals(responseFromApi.id, res)
 
                         }
+                        return true
                     })
                 }).then(() => { history.push("/events") })
         } else {

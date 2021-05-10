@@ -2,7 +2,6 @@ import React from "react";
 import "./NavBar.css";
 import { Link, Route } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import dog from "../../dog.svg";
 
 export const NavBar = () => {
   return (
@@ -19,7 +18,7 @@ export const NavBar = () => {
             </svg>
           </div>
           <div>
-            <div id="appName">Aromal Piquant</div>
+            <div id="appName">Checkered Blast</div>
           </div>
           <Route>
             <Link className="nav-link" onClick={() => { sessionStorage.clear() }} to="/login">Logout</Link>

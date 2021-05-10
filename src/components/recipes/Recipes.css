@@ -4,15 +4,26 @@
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
-    font-size:3em;
+    font-size: 3em;
 }
 
-#recipeTitle {
-    background-color: #F2bf27;
-}
+/* #recipeHeader{
+    margin-left:15%;
+    align-content: center;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    background: #b06c25;
+    border: 1px dashed #fff;
+    padding: 1rem 1rem;
+    outline: 5px solid #b06c25;
+    color: #fff;
+    text-shadow: 1px 1px #83511d;
+    margin-top: .2em;
+    width: fit-content;
+} */
 
 .recipeEditFields {
-    display:flex;
+    display: flex;
     flex-direction: row;
     width: 100px;
 }
@@ -36,13 +47,13 @@ input {
     margin-bottom: 0px;
 }
 
-button{
+button {
     margin-bottom: 1em;
     font-size: 2em;
 }
 
-.recipeTopDisplay{
-    display:flex;
+.recipeTopDisplay {
+    display: flex;
     flex-direction: row;
     align-content: space-between;
 }
@@ -50,74 +61,82 @@ button{
 .recipeIngredientsDisplay {
     margin-left: 10em;
     padding: .7em;
-    background-color: #F2bf27;
     min-width: 6em;
     max-width: fit-content;
     border-radius: 10%;
-
-
 }
+
 .recipeInstructionsDisplay {
     padding-left: .7em;
     background-color: #ffffff;
     min-width: 6em;
     max-width: fit-content;
     border-radius: 10%;
-
 }
 
-.recipeCardNotes{
-    
+.recipeCardNotes {
     background-color: white;
     max-width: 20em;
 }
 
 .recipeCardTime {
-
-    padding:.5em;
+    padding: .5em;
     padding-top: 0em;
     /* background-color: lightblue; */
     width: fit-content;
 }
 
-#cookBookSearch{
-    font-size:1em;
+#cookBookSearch {
+    font-size: 1em;
     background-color: white;
     max-width: fit-content;
     margin-bottom: 0px;
 }
 
-.cookBookSearchDiv{
-    font-size:2em;
+.cookBookSearchDiv {
+    font-size: 2em;
     background-color: white;
     max-width: fit-content;
     margin-bottom: 4em;
 }
 
-.recipePrepCookTime{
+.recipePrepCookTime {
     font-size: 3em;
 }
+
 .recipePrepCookTime2 {
     font-size: 4em;
 }
-.recipeInternale{
+
+.recipeInternale {
     padding-left: -.5em;
     font-size: 3em;
 }
 
-.entryTime{
+.entryTime {
     font-size: 2em;
 }
 
-.entryNotes{
+.entryNotes {
     font-size: 2em;
 }
 
-.recipeSearchLabel{
+.recipeSearchLabel {
     font-size: 2.5em;
 }
 
 #notes {
     min-width: 40em;
     font-size: 2em;
+}
+
+#pageName {
+    width:fit-content;
+    font-family: 'Fugaz one', cursive;
+    
+    font-size: 4em;
+    background: linear-gradient( to left, rgba(116, 120, 123, 1), rgba(105, 78, 61, .7));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-shadow: -2px -2px 1px rgba(140,119,92,.6);
 }

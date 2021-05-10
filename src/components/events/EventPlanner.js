@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { getEventsByUserId } from "../../modules/eventsManager"
-import { EventCard } from "./EventCard"
 import "./events.css"
 import { userStorageKey } from "../auth/authSettings"
 
@@ -10,7 +9,7 @@ export const EventPlanner = () => {
     const [historicEvents, setHistoricEvents] = useState([])
     const history = useHistory()
     const getSoonest = (eventsToBeSorted) => {
-        const now = new Date()
+        // const now = new Date()
 
         let sorted = eventsToBeSorted.sort(
             (currentEntry, nextEntry) =>

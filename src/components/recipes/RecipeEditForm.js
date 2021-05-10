@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { cookTimeToString, ingredientToString, instructToString, prepTimeToStraing, splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
+import { cookTimeToString, prepTimeToStraing, splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
 import { getRecipeById, getRecipesByUser, deleteRecipeById, updateRecipeById } from "../../modules/recipeManager"
 import {userStorageKey} from "../auth/authSettings"
 

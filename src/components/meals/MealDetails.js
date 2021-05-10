@@ -18,7 +18,7 @@ export const MealDetails = () => {
             .then((responseFromAPi) => {
                 if (responseFromAPi.length > 0) {
 
-                    setMeals(responseFromAPi)
+                    // setMeals(responseFromAPi)
                     setMealName(responseFromAPi[0].meal.mealName)
                     setRecipe([...responseFromAPi.map((rec) => {
                         return rec.recipe

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import {  useHistory } from "react-router-dom"
 import { EmptySpotLight } from "../helpers/EmptySpotLight"
 import { SpotLight } from "../helpers/SpotLight"
-import { getEventsByUserId, getSpotlighEventMealsByUserIs } from "../modules/eventsManager"
+import { getEventsByUserId } from "../modules/eventsManager"
 import { userStorageKey } from "./auth/authSettings"
 import "./Home.css"
 export const DashBoard = () => {
     const [events, setEvents] = useState([])
-    const [historicEvents, setHistoricEvents] = useState([])
     const history = useHistory()
     const getSoonest = (eventsToBeSorted) => {
-        const now = new Date()
+        // const now = new Date()
 
         let sorted = eventsToBeSorted.sort(
             (currentEntry, nextEntry) =>
@@ -25,7 +24,6 @@ export const DashBoard = () => {
                 completed.push(sorted[i])
             }
         }
-        setHistoricEvents([...completed])
         setEvents([...future])
         // return [...sorted]
     }
@@ -50,6 +48,7 @@ export const DashBoard = () => {
                                 <SpotLight key={"SpotLight"} eventMeal={evt.id}/>
                                 </>)
                         }
+                        return ""
                     })): <EmptySpotLight key={"emptySpotLight"} />}
                 </div>
             </div>

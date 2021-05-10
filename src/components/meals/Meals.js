@@ -7,7 +7,6 @@ import "./Meals.css"
 // Create Static meal page until logic is futher filled out
 export const Meals = () => {
     const history = useHistory()
-    let i = 0
     const [userMeals, setUserMeals] = useState([])
     const [meals, setMeals] = useState([""])
     // const [mealsFromUser, setMealsFromUSer] = useState([])
