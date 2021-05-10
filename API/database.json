@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jeremiah Schugt",
+      "email": "j@j.com"
+    },
+    {
+      "email": "b@b.com",
+      "name": "BB BB",
+      "id": 2
+    }
+  ],
+  "recipes": [
+    {
+      "recipeName": "Hamburgers",
+      "ingredientsList": "Meat_-_-_-_Cheese_-_-_-_Buns_-_-_-_Pickles_-_-_-_Bacon",
+      "instructions": "Cook patties for 10 minutes flipping halfway through_-_-_-_Add cheese to top or burger for the last 30 seconds_-_-_-_put patty on bun_-_-_-_add pickles and bacon",
+      "notes": "Quick burger",
+      "prepTime": "0:-:10",
+      "cookTime": "0:-:",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "recipeName": "Tacos",
+      "ingredientsList": "Ground Beef_-_-_-_Tortilla_-_-_-_Salsa",
+      "instructions": "",
+      "notes": "",
+      "prepTime": "0:-:0",
+      "cookTime": "0:-:0",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "recipeName": "Test this should never show up",
+      "ingredientsList": "",
+      "instructions": "",
+      "notes": "",
+      "prepTime": "0:-:0",
+      "cookTime": "0:-:0",
+      "userId": 1,
+      "id": 3
+    }
+  ],
+  "meals": [
+    {
+      "mealName": "Burger Knight",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "mealName": "Taco Knight",
+      "id": 2
+    },
+    {
+      "mealName": "Normal Knight",
+      "userId": 1,
+      "id": 3
+    }
+  ],
+  "eventMeals": [
+    {
+      "mealId": 2,
+      "eventId": 1,
+      "mealTime": "00:01",
+      "id": 1
+    },
+    {
+      "mealId": 1,
+      "eventId": 1,
+      "mealTime": "00:01",
+      "id": 2
+    },
+    {
+      "mealId": 1,
+      "eventId": 1,
+      "mealTime": "00:01",
+      "id": 3
+    }
+  ],
+  "events": [
+    {
+      "userId": 1,
+      "eventDate": "2021-06-02",
+      "id": 1
+    }
+  ],
+  "mealRecipes": [
+    {
+      "recipeId": 1,
+      "mealId": 1,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "recipeId": 1,
+      "mealId": 2,
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "recipeId": 2,
+      "mealId": 2,
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "recipeId": 1,
+      "mealId": 2,
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "recipeId": 2,
+      "mealId": 2,
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "recipeId": 2,
+      "mealId": 2,
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "recipeId": 1,
+      "mealId": 3,
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "recipeId": 2,
+      "mealId": 3,
+      "userId": 1,
+      "id": 8
+    }
+  ]
+}
