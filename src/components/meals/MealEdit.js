@@ -82,10 +82,11 @@ export const MealEdit = () => {
         }
         updateMealById(mealsId, mealName)
         if (hold.length === 0) {
+            
             history.push("/meals")
         } else {
             hold.forEach(recipe => {
-                createMealRecipe(recipe, mealsId).then(() => { history.push("/meals") })
+                createMealRecipe(recipe, parseInt(mealsId)).then(() => { history.push("/meals") })
             })
         }
     }

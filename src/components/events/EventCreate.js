@@ -5,22 +5,22 @@ import { userStorageKey } from "../auth/authSettings"
 import { confirmAlert } from "react-confirm-alert"
 import "./events.css"
 export const EventCreate = () => {
-    const date =new Date()
+    const date = new Date()
     const history = useHistory()
     const [userMeals, setUserMeals] = useState([])
     const [eventMeals, setEventMeals] = useState([{ mealTime: "00:01", mealId: "0" }])
     const [eventObj, setEventObj] = useState({
         userId: parseInt(sessionStorage.getItem(userStorageKey)),
-        eventDate: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+        eventDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     })
     // Events
     useEffect(() => {
-        getMealsByUserId(1).then(response => {
+        getMealsByUserId(sessionStorage.getItem(userStorageKey)).then(response => {
             setUserMeals(response)
         })
     }, [])
     const handleRemoveMeal = (i) => {
-        const temp = [...eventMeals];
+        let temp = [...eventMeals];
         temp.splice(i, 1);
         setEventMeals(temp);
     }
@@ -53,17 +53,22 @@ export const EventCreate = () => {
         evt.preventDefault()
         let tempMeal = []
         eventMeals.forEach(meal => {
-            if (meal.mealId === "0") {
+            if (meal.mealId === "0" || meal.mealId === 0) {
             }
             else {
                 tempMeal.push(meal)
             }
         })
         if (tempMeal.length > 0) {
-            setEventMeals([tempMeal])
+            setEventMeals([...tempMeal])
             createEvent(eventObj)
                 .then(responseFromApi => {
-                    eventMeals.map(res => { createEventMeals(responseFromApi.id, res) })
+                    eventMeals.map(res => {
+                        if (res.mealId !== 0 && res.mealId !== "0") {
+                            createEventMeals(responseFromApi.id, res)
+
+                        }
+                    })
                 }).then(() => { history.push("/events") })
         } else {
             confirmAlert({

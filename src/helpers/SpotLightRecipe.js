@@ -23,7 +23,7 @@ export const SpotLightRecipe = ({ recipe }) => {
                 }))
                 setCookTime({
                     cookHours: splitTime(recipe.recipe.cookTime)[0],
-                    cookMinutes: splitTime(recipe.recipe.cookTime)[1]    
+                    cookMinutes: splitTime(recipe.recipe.cookTime)[1]
                 })
                 setPrepTime({
                     prepHours: splitTime(recipe.recipe.prepTime)[0],
@@ -38,14 +38,18 @@ export const SpotLightRecipe = ({ recipe }) => {
         <h3>{recipeList.recipeName}</h3>
         <div className="spotlight-recipe-instruct-ingred">
             <div>
-            {ingredientList.map((item, i) => {
-                return <div key={`ingredient__${i}`}className="ingredient-Instruction-Spot-Light">Ingredient {(i + 1)}:{item}</div>
-            })}
+                {ingredientList.map((item, i) => {
+                    if (item !== "") {
+                        return <li key={`ingredient__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                    }
+                })}
             </div>
             <div>
-            {instructionList.map((item, i) => {
-                return <div  key={`instruction__${i}`}className="ingredient-Instruction-Spot-Light">Step {(i + 1)}:{item}</div>
-            })}
+                {instructionList.map((item, i) => {
+                    if (item !== "") {
+                        return <li key={`instruction__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                    }
+                })}
             </div>
         </div>
         <div className="prepCookTimes">Prep: {prepTime.prepHours} hours {prepTime.prepMinutes} minutes</div>

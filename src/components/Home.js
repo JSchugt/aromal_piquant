@@ -42,7 +42,6 @@ export const DashBoard = () => {
             <div className="allEvents">
                 <div>
                     <h2>SpotLight</h2>
-                    {console.log(events, "events home")}
                     { (events.length > 0)? (events.map((evt,i )=> {
                         if(i===0){
                             return (<><div onClick={handleEventOnClick} className="eventDatePlanner">

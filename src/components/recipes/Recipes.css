@@ -48,25 +48,35 @@ button{
 }
 
 .recipeIngredientsDisplay {
+    margin-left: 10em;
+    padding: .7em;
     background-color: #F2bf27;
-    margin-left: 4em;
     min-width: 6em;
     max-width: fit-content;
+    border-radius: 10%;
+
 
 }
 .recipeInstructionsDisplay {
+    padding-left: .7em;
     background-color: #ffffff;
     min-width: 6em;
     max-width: fit-content;
+    border-radius: 10%;
+
 }
 
 .recipeCardNotes{
+    
     background-color: white;
     max-width: 20em;
 }
 
 .recipeCardTime {
-    background-color: lightblue;
+
+    padding:.5em;
+    padding-top: 0em;
+    /* background-color: lightblue; */
     width: fit-content;
 }
 
@@ -91,6 +101,7 @@ button{
     font-size: 4em;
 }
 .recipeInternale{
+    padding-left: -.5em;
     font-size: 3em;
 }
 

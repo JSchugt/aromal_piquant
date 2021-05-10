@@ -123,7 +123,22 @@ export const EventEdit = () => {
             }
         }
         if (temp.length > 0) {
-            temp.forEach((sendObj) => { return updateEventEventMeals(sendObj) })
+            temp.forEach((sendObj) => {
+                
+                
+                
+                ////////////////////////////////////////////
+                
+                
+                
+                
+                
+                
+                
+                if( sendObj.mealId !== 0 && sendObj.mealId !== "0"){
+
+                    return updateEventEventMeals(sendObj) }
+                })
             eventEditDateUpdate(eventObj.eventDate, eventId)
             getEventMealByEventId(eventId).then(() => { history.push(`/events/${eventId}`) })
 
