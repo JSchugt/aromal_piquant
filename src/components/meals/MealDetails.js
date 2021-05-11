@@ -8,7 +8,6 @@ import { userStorageKey } from "../auth/authSettings"
 export const MealDetails = () => {
     const { mealsId } = useParams()
     const history = useHistory()
-    const [meals, setMeals] = useState([{}])
     const [mealName, setMealName] = useState([])
     const [recipe, setRecipe] = useState([])
 
@@ -25,7 +24,7 @@ export const MealDetails = () => {
                     })])
                 }
             })
-    }, [])
+    }, [mealsId])
     const handleRecipeClick = (evt) => {
         evt.preventDefault()
         history.push(`/recipes/${evt.target.id}`)

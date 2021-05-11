@@ -10,14 +10,14 @@ export const SpotLight = ({ eventMeal }) => {
                 Date.parse(parseInt(currentEntry.mealTime.replace(":", "0"))) - Date.parse(parseInt(nextEntry.mealTime.replace(":", "0")))
 
         )
-        return mealObj
+        return sorted
     }
     useEffect(() => {
         getSpotLightEventByEventId(eventMeal)
             .then(responseFromApi => {
                 setSpotLightMeal(getEarliest(responseFromApi))
             })
-    }, [])
+    }, [eventMeal])
     return (<>
             {spotLightMeal.map((item, i) => {
                 return (<>

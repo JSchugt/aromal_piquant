@@ -27,7 +27,7 @@ export const EventEdit = () => {
                     })
             }
         })
-    }, [])
+    }, [eventId])
 
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export const EventEdit = () => {
             mealTime: "00:00",
             eventId: eventId
         }])
-    }, [])
+    }, [eventId])
 
 
     const handleOnChange = (evt) => {

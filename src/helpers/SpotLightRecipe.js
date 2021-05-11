@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getMealAndRecipeByMealId } from "../modules/mealRecipeManager"
 import "../components/Home.css"
-import { splitInstructionsIngrendiens, splitTime, ingredientToString } from "./measurements"
+import { splitInstructionsIngrendiens, splitTime } from "./measurements"
 
 
 export const SpotLightRecipe = ({ recipe }) => {
@@ -10,7 +10,7 @@ export const SpotLightRecipe = ({ recipe }) => {
         getMealAndRecipeByMealId(recipe.meal.id).then(responseFromApi => {
             setRecipeList(responseFromApi)
         })
-    }, [])
+    }, [recipe.meal.id])
 
     return (<>
         <div className="spotLightLister">
@@ -27,6 +27,8 @@ export const SpotLightRecipe = ({ recipe }) => {
                                     {splitInstructionsIngrendiens(rec.recipe.ingredientsList).map((item, i) => {
                                         if (item !== "") {
                                             return <li key={`ingredient__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                                        } else {
+                                            return ""
                                         }
                                     }
                                     )}
@@ -38,6 +40,8 @@ export const SpotLightRecipe = ({ recipe }) => {
                                     {splitInstructionsIngrendiens(rec.recipe.instructions).map((item, i) => {
                                         if (item !== "") {
                                             return <li key={`instruction__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                                        } else {
+                                            return ""
                                         }
                                     })}
                                 </ol>

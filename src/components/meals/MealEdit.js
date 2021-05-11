@@ -28,7 +28,7 @@ export const MealEdit = () => {
             }))
         })
         getMealsById(mealsId).then(res => setMealName(res.mealName))
-    }, [])
+    }, [mealsId])
 
     const handleRemoveRecipeClick = index => {
         confirmAlert({
@@ -59,7 +59,7 @@ export const MealEdit = () => {
     const handleRemoveNewRecipeClick = index => {
         const temp = [...recipeList];
 
-        let deleteItem = temp.splice(index, 1);
+        temp.splice(index, 1);
         setRecipeList(temp);
     }
     const handleAddRecipeClick = (evt) => {

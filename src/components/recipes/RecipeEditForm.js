@@ -20,7 +20,8 @@ export const RecipeEditForm = () => {
     useEffect(() => {
         getRecipeById(recipeId).then((recipeFromApi) => {
             // setRecipe(recipeFromApi);
-            setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+                setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+          // setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
             setIngredients(splitInstructionsIngrendiens(recipeFromApi.ingredientsList));
             setNotes(recipeFromApi.notes);
             setMealName(recipeFromApi.recipeName);
@@ -33,7 +34,7 @@ export const RecipeEditForm = () => {
                 prepMinutes: splitTime(recipeFromApi.prepTime)[1] 
             });
         })
-    }, [])
+    }, [recipeId])
 
     //Deletes the current recipe based on the recipe from the use params
     const handleDeleteRecipe = () => {
@@ -55,12 +56,12 @@ export const RecipeEditForm = () => {
     // handle click event of the Remove button
     const handleRemoveIngredientClick = index => {
         const temp = [...ingredients];
-        temp.splice(index, 1);
+        // let kick = temp.splice(index, 1);
         setIngredients(temp);
     };
     const handleRemoveInstructionClick = index => {
         const temp = [...instructions];
-        temp.splice(index, 1);
+        temp.splice(index+1, 1);
         setInstructions(temp);
     };
     // handle click event of the Add button
@@ -90,7 +91,6 @@ export const RecipeEditForm = () => {
             setPrepTime(temp)
         }
     }
-    //TODO: update user id based on logged in user
     // Handles saving recipe edit when the user selects save button
     const handleSaveRecipe = (evt) => {
 
@@ -118,35 +118,35 @@ export const RecipeEditForm = () => {
             <input type="text" name="mealName" onChange={handleNotesOnChange} id="mealName" defaultValue={mealName} />
             <div className="entryFields">
                 <div className="ingredientField">
-                    {ingredients.map((x, i) => {
+                    {ingredients.map((x, j) => {
                         return (
                             <>
-                                <div className="box" key={`ingredient__${i}`} >
+                                <div className="box" key={`ingredient__${j}`} >
                                     <input
 
                                         name="ingredient"
-                                        onChange={evt => handleInputChange(evt, i)}
+                                        onChange={evt => handleInputChange(evt, j)}
                                         defaultValue={x}
                                     />
                                     <div className="btn-box">
                                         {ingredients.length !== 1 && <button
                                             className="recipeRemoveButton"
-                                            onClick={() => handleRemoveIngredientClick(i)}>Remove</button>}
-                                        {ingredients.length - 1 === i && <button onClick={handleAddIngredientClick}>Add</button>}
+                                            onClick={() => handleRemoveIngredientClick(j)}>Remove</button>}
+                                        {ingredients.length - 1 === j && <button onClick={handleAddIngredientClick}>Add</button>}
                                     </div>
                                 </div>
                             </>);
                     })}
                 </div>
                 <div>
-                    {instructions.map((x, i) => {
+                    {instructions.map((y, i) => {
                         return (
                             <>
                                 <div className="box" key={`instruction__${i}`}>
                                     <input
                                         name="instruction"
                                         onChange={evt => handleInstructionInputChange(evt, i)}
-                                        defaultValue={x}
+                                        defaultValue={y}
                                     />
                                     <div className="btn-box">
                                         {instructions.length !== 1 && <button
