@@ -54,15 +54,11 @@ export const Meals = () => {
         history.push("/meals/create")
     }
     return (<>
-        <div>
-            <h2 id="mealListTitle">Meal List</h2>
-        </div>
-        <div>
+        <div id="mealPageName">
             <fieldset>
-                <label className="mealSearchNameLabel">Meal Search</label>
-                <input className="mealSearchNameInput" type="text" onChange={handleSearch}></input>
+                <div id="mealListTitle">Meal List</div>
+                <input className="mealSearchNameInput" type="text" onChange={handleSearch} placeholder="🔍"></input>
             </fieldset>
-
         </div>
         <div className="mealListDiv">
             {(userMeals !== null) ? userMeals.map((meal) => {

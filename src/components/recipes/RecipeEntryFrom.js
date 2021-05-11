@@ -11,8 +11,8 @@ export const RecipeEntryForm = () => {
     const history = useHistory()
     const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
     const [instructionList, setInstructionList] = useState([{ instruction: "" }])
-    const [notes, setNotes] = useState([""])
-    const [mealName, setMealName] = useState([""])
+    const [notes, setNotes] = useState("")
+    const [mealName, setMealName] = useState("")
     const [prepTime, setPrepTime] = useState({ prepHours: 0, prepMinutes: 0 })
     const [cookTime, setCookTime] = useState({ cookHours: 0, cookMinutes: 0 })
     // handle input change

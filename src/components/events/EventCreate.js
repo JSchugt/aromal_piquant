@@ -36,7 +36,7 @@ export const EventCreate = () => {
     // Event Meals Section
     // Add new block for meal to event
     const handleAddMealClick = (evt) => {
-        setEventMeals([...eventMeals, { mealTime: "99:99", mealId: "0" }])
+        setEventMeals([...eventMeals, { mealTime: "00:01", mealId: "0" }])
     }
     // Set event meals object in array to values changed in code
     const handleEventMealsOnChange = (evt, i) => {

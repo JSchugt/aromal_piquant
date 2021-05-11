@@ -84,11 +84,11 @@ export const MealEdit = () => {
             
             history.push("/meals")
         } else {
-            hold.forEach(recipe => {
-                createMealRecipe(recipe, parseInt(mealsId)).then(() => { history.push("/meals") })
-            })
+            Promise.all(hold.map((recipe)=> createMealRecipe(recipe, parseInt(mealsId))))
+            .then(() => { history.push("/meals")})
         }
     }
+
     const handleInputChange = (evt, index) => {
         let temp = [...recipeList];
         temp[index] = evt.target.value;

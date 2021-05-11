@@ -39,7 +39,7 @@ export const DashBoard = () => {
         <>
             <div className="allEvents">
                 <div>
-                    <h2>SpotLight</h2>
+                    <h2 className="spotLightH2">Spot Light</h2>
                     { (events.length > 0)? (events.map((evt,i )=> {
                         if(i===0){
                             return (<><div onClick={handleEventOnClick} className="eventDatePlanner">

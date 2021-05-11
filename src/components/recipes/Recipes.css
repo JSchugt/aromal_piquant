@@ -7,21 +7,6 @@
     font-size: 3em;
 }
 
-/* #recipeHeader{
-    margin-left:15%;
-    align-content: center;
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-    background: #b06c25;
-    border: 1px dashed #fff;
-    padding: 1rem 1rem;
-    outline: 5px solid #b06c25;
-    color: #fff;
-    text-shadow: 1px 1px #83511d;
-    margin-top: .2em;
-    width: fit-content;
-} */
-
 .recipeEditFields {
     display: flex;
     flex-direction: row;
@@ -140,3 +125,4 @@ button {
     -webkit-background-clip: text;
     text-shadow: -2px -2px 1px rgba(140,119,92,.6);
 }
+

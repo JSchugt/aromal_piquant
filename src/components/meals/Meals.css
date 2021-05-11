@@ -28,9 +28,19 @@ fieldset {
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+#mealPageName{
+  display: flex;
+  flex-direction: row;
+}
 #mealListTitle {
-    background-color: #F2bf27; 
+  width:fit-content;
+  font-family: 'Fugaz one', cursive;
+  
+  font-size: 4em;
+  background: linear-gradient( to left, rgba(116, 120, 123, 1), rgba(105, 78, 61, .7));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: -2px -2px 1px rgba(140,119,92,.6);
 }
 
 .plate {
@@ -218,6 +228,7 @@ select {
 .mealListMealName{
   font-size: 2em;
   margin-top: .5em;
+  padding: 0px;
 }
 
 .mealSearchNameInput, .mealSearchNameLabel {

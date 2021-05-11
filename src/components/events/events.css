@@ -1,167 +1,173 @@
 #eventPlannerTitle {
-    background-color: #F2bf27 ;
+  background-color: #F2bf27;
 }
-.eventEditMeal{
+
+.eventEditMeal {
   background-color: burlywood;
-  width:10em;
+  width: 10em;
 }
+
 #eventsList, #historicEvents {
-    background-color: blue;
-    border-radius: 10px;
-    max-width: fit-content;
-    padding-left:10px;
-    padding-right: 10px;
+  background-color: blue;
+  border-radius: 10px;
+  max-width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
 .allEvents {
   display: flex;
   flex-direction: row;
-  flex-basis: 40%;
+  justify-content: space-evenly;
 }
 
 .allEvents div {
-flex-basis: 40%;}
+  flex-basis: 40%;
+}
 
 #eventsBody {
-    display: flex;
-    flex-direction: row;
-    align-items: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
 }
 
 button {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
-p{
-    color: black;
+p {
+  color: black;
 }
 
 .eventDatePlanner {
-    width: fit-content;
-    background-color: red;
+  width: fit-content;
+  background-color: red;
 }
 
+.eventDatePlanner h2 {
+  font-size: 2em;
+}
 
 body.react-confirm-alert-body-element {
-    overflow: hidden;
-  }
-  
-  .react-confirm-alert-blur {
-    filter: url(#gaussian-blur);
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
-  }
-  
-  .react-confirm-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-    background: rgba(000, 000, 000, 0.8);
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    justify-content: center;
-    -ms-align-items: center;
-    align-items: center;
-    opacity: 0;
-    -webkit-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-    -moz-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-    -o-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-    animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
-  }
-  
-  .react-confirm-alert-body {
-    font-family: Arial, Helvetica, sans-serif;
-    width: 400px;
-    padding: 30px;
-    text-align: left;
-    background: #000;
-    border-radius: 10px;
-    box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
-    color: #666;
-  }
-  
-  .react-confirm-alert-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .react-confirm-alert-body > h1 {
-    margin-top: 0;
-  }
-  
-  .react-confirm-alert-body > h3 {
-    margin: 0;
-    font-size: 16px;
-  }
-  
-  .react-confirm-alert-button-group {
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 20px;
-  }
-  
-  .react-confirm-alert-button-group > button {
-    outline: none;
-    background: #333;
-    border: none;
-    display: inline-block;
-    padding: 6px 18px;
-    color: #eee;
-    margin-right: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  
-  @-webkit-keyframes react-confirm-alert-fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @-moz-keyframes react-confirm-alert-fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @-o-keyframes react-confirm-alert-fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes react-confirm-alert-fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  overflow: hidden;
+}
 
-.custom-ui h1, p{
-    color:rgba(000,000,000,.5)
-    
+.react-confirm-alert-blur {
+  filter: url(#gaussian-blur);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.react-confirm-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(000, 000, 000, 0.8);
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  opacity: 0;
+  -webkit-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+  -moz-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+  -o-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+  animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+}
+
+.react-confirm-alert-body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  padding: 30px;
+  text-align: left;
+  background: #000;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+  color: #666;
+}
+
+.react-confirm-alert-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.react-confirm-alert-body>h1 {
+  margin-top: 0;
+}
+
+.react-confirm-alert-body>h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.react-confirm-alert-button-group {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.react-confirm-alert-button-group>button {
+  outline: none;
+  background: #333;
+  border: none;
+  display: inline-block;
+  padding: 6px 18px;
+  color: #eee;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@-webkit-keyframes react-confirm-alert-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes react-confirm-alert-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes react-confirm-alert-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes react-confirm-alert-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.custom-ui h1, p {
+  color: rgba(000, 000, 000, .5)
 }
 
 input {
@@ -172,9 +178,74 @@ input {
   font-size: 3em;
 }
 
-.eventDetailsCard h4{
+.eventDetailsCard h4 {
   font-size: 2em;
 }
-.eventDetailsCard h2{
+
+.eventDetailsCard h2 {
   font-size: 3em;
+}
+
+.grid-container {
+  display: grid;
+  font-size: 3em;
+  grid-template-columns: max-content max-content max-content max-content max-content;
+  grid-template-rows: max-content max-content max-content max-content max-content max-content max-content;
+  gap: 5px 5px;
+}
+
+/* For presentation only, no need to copy the code below */
+
+.grid-container * {
+  /* background-color: red; */
+  background-color: rgba(0, 0, 255, .4);
+  text-shadow: 1px 1px 2px;
+  position: relative;
+}
+
+.grid-container *:after {
+  content: attr(class);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.eventTilePlanner {
+  font-size: 2em;
+}
+
+.historic-grid-container {
+  display: grid;
+  font-size: 3em;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content max-content max-content max-content max-content max-content;
+  gap: 5px 5px;
+}
+
+/* For presentation only, no need to copy the code below */
+
+.historic-grid-container * {
+  /* background-color: red; */
+  background-color: rgba(255, 0, 0, .4);
+  text-shadow: 1px 1px 2px;
+  position: relative;
+}
+
+.historic-grid-container *:after {
+  content: attr(class);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+
+.planColumn {
+  width:fit-content;
+  font-family: 'Fugaz one', cursive;
+  
+  font-size: 4em;
+  background: linear-gradient( to left, rgba(116, 120, 123, 1), rgba(105, 78, 61, .7));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: -2px -2px 1px rgba(140,119,92,.6);
 }
