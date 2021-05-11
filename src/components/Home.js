@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {  useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { EmptySpotLight } from "../helpers/EmptySpotLight"
 import { SpotLight } from "../helpers/SpotLight"
 import { getEventsByUserId } from "../modules/eventsManager"
@@ -39,17 +39,28 @@ export const DashBoard = () => {
         <>
             <div className="allEvents">
                 <div>
-                    <h2 className="spotLightH2">Spot Light</h2>
-                    { (events.length > 0)? (events.map((evt,i )=> {
-                        if(i===0){
-                            return (<><div onClick={handleEventOnClick} className="eventDatePlanner">
-                                <h2 id={evt.id}>{evt.eventDate}</h2>
-                                </div>
-                                <SpotLight key={"SpotLight"} eventMeal={evt.id}/>
-                                </>)
-                        }
-                        return ""
-                    })): <EmptySpotLight key={"emptySpotLight"} />}
+                    {(events.length > 0) ? (
+                        <div>
+                            <div className="spotLightH2">Spot Light</div>
+
+                            <div className="spotLightContainer">
+                                {events.map((evt, i) => {
+                                    if (i === 0) {
+                                        return (
+                                            <div key={evt.id}>
+                                                <div onClick={handleEventOnClick} key={evt.id} className="eventDatePlanner">
+                                                    <h2 id={evt.id}>{evt.eventDate}</h2>
+                                                </div>
+                                                <SpotLight key={"SpotLight"} eventMeal={evt.id} />
+                                            </div>
+                                        )
+                                    }
+                                    return ""
+                                })
+                                }
+                            </div>
+                        </div>
+                    ) : <EmptySpotLight key={"emptySpotLight"} />}
                 </div>
             </div>
         </>

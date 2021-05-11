@@ -108,22 +108,22 @@ export const MealEdit = () => {
         </div>
         {mealRecipes.map((mealRec, i) => {
             return (
-                <>
+                <div key={mealRec.id}>
                     <div className="mealRecipeEditName" id={mealRec.id} value={mealRec.recipeName} onClick={handleRecipeOnClick}>{mealRec.recipeName}</div>
                     <div className="btn-box">
                         {mealRecipes.length !== 0 && <button
                             className="recipeRemoveButton"
                             onClick={() => handleRemoveRecipeClick(i)}>Remove</button>}
                     </div>
-                </>
+                </div>
             )
         })}
 
         {recipeList.map((x, i) => {
             return (
-                <>
+                <div key={i}>
                     <select onChange={evt => handleInputChange(evt, i)} placeholder="Select A Recipe">
-                        <option selected={true}>Select A recipe</option>
+                        <option key={"0"}defaultValue="0">Select A recipe</option>
                         {recipes.map((recipe) => {
                             return <option key={recipe.id} id={recipe.id} value={recipe.id} >{recipe.recipeName}</option>
                         })}
@@ -134,7 +134,7 @@ export const MealEdit = () => {
                             onClick={() => handleRemoveNewRecipeClick(i)}>Remove</button>}
                         {recipeList.length - 1 === i && <button onClick={handleAddRecipeClick}>Add</button>}
                     </div>
-                </>
+                </div>
             )
         })}
     </>)

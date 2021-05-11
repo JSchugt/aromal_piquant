@@ -33,10 +33,10 @@ export const MealDetails = () => {
     const handleDeleteMeal = (evt) => {
         evt.preventDefault()
         deleteMealById(mealsId)
-        .then(()=>{getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey))})
+            .then(() => { getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey)) })
         history.push("/meals")
     }
-    return (<>
+    return (<div id="mainMealList">
 
         <h1>{mealName}</h1>
         <Link to={`/meals/${mealsId}/edit`}>
@@ -45,10 +45,10 @@ export const MealDetails = () => {
         </Link>
         <button onClick={handleDeleteMeal}>Delete</button>
         { (recipe.length > 0) ? (recipe.map(item => {
-            return <p className={"mealRecipeLister"}id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
+            return <p key={item.id} className={"mealRecipeLister"} id={item.id} onClick={handleRecipeClick}>{item.recipeName}</p>
         })) : ""}
 
-    </>)
+    </div>)
 
 
 }

@@ -13,6 +13,7 @@ import { MealEdit } from "./components/meals/MealEdit"
 import { EventCreate } from "./components/events/EventCreate"
 import { EventDetails } from "./components/events/EventDetails"
 import { EventEdit }  from "./components/events/EventEdit"
+import { EmptySpotLight } from "./helpers/EmptySpotLight"
 
 export const ApplicationViews = () => {
     return (
@@ -60,6 +61,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/recipes/:recipeId(\d+)">
                 <RecipeCard />
+            </Route>
+            <Route exact path="/empty/planner">
+                <EmptySpotLight />
             </Route>
         </>
     )

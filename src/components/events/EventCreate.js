@@ -86,33 +86,32 @@ export const EventCreate = () => {
         }
     }
     return (<>
-        <h1 key={"event_create_title"}>Lets Plan Somthing</h1>
-        <button key={"event_create_handle_on_save"} onClick={handleOnSave}>Save Event</button>
-        <div key={"event_create_input_contain_div"}>
-            <input key={"event_create_set_date"} type="date" id="eventDate" onChange={handleOnChange} defaultValue={eventObj.eventDate}></input>
+        <h1 >Lets Plan Somthing</h1>
+        <button onClick={handleOnSave}>Save Event</button>
+        <div >
+            <input type="date" id="eventDate" onChange={handleOnChange} defaultValue={eventObj.eventDate}></input>
         </div>
         {/* Begin Drop Down Seciton */}
-        <section key={"event_create_add_meal_section"}>
+        <section >
             {eventMeals.map((item, i) => {
-                return (<>
-                    <div key={"event_create_div_before_selection"}>
-                        <label key={"label_for_event_create_section"} className="labelCreateEvent">Meal</label>
-                        <div key={"div_inside_selection_create_event"}>
-                            <select key={"meal_field_select"+i} id="mealId" onChange={(evt) => handleEventMealsOnChange(evt, i)} >
-                                <option key={"meal_option__"+i+"__"+0} value="0">Select A Meal</option>
+                return (
+                    <div key={i}>
+                        <label className="labelCreateEvent">Meal</label>
+                        <div >
+                            <select id="mealId" onChange={(evt) => handleEventMealsOnChange(evt, i)} >
+                                <option value="0">Select A Meal</option>
                                 {userMeals.map(meal => {
-                                    return (<option key={"meal_option__"+i+"__"+meal.id} value={meal.id} >{meal.mealName}</option>)
+                                    return (<option key={meal.id} value={meal.id} >{meal.mealName}</option>)
                                 })}
                             </select>
-                            <input key={"input_time_event_create"+i} type="time" id="mealTime" defaultValue="00:01" onChange={(evt) => handleEventMealsOnChange(evt, i)} />
+                            <input type="time" id="mealTime" defaultValue="00:01" onChange={(evt) => handleEventMealsOnChange(evt, i)} />
                         </div>
+                        {eventMeals.length !== 1 && <button
+                            className="recipeRemoveButton"
+                            onClick={() => handleRemoveMeal(i)}>Remove</button>}
+                        {eventMeals.length - 1 === i && <button onClick={handleAddMealClick}>Add</button>}
                     </div>
-                    {eventMeals.length !== 1 && <button
-                    key={"event_create_remove_button"+i}
-                        className="recipeRemoveButton"
-                        onClick={() => handleRemoveMeal(i)}>Remove</button>}
-                    {eventMeals.length - 1 === i && <button key={"event_create_add_meal_button"} onClick={handleAddMealClick}>Add</button>}
-                </>)
+                )
             })}
 
         </section>

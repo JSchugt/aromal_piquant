@@ -48,7 +48,7 @@ export const EventPlanner = () => {
                     <div className="grid-container">
                     {events.map(evt => {
                         // Gets date for event converts it to MMM DD and returns tile for the grid
-                        return <div onClick={handleEventOnClick}  id={evt.id}>{monthToString(evt.eventDate.slice(5))}</div>
+                        return <div key={evt.id} onClick={handleEventOnClick}  id={evt.id}>{monthToString(evt.eventDate.slice(5))}</div>
                     })}
                     </div>
                 </div>
@@ -56,7 +56,7 @@ export const EventPlanner = () => {
                     <h2 className="planColumn">Historic Events</h2>
                     <div className="historic-grid-container">
                     {historicEvents.map(evt3 => {
-                        return <div onClick={handleEventOnClick} id={evt3.id}>{evt3.eventDate}</div>
+                        return <div key={evt3.id} onClick={handleEventOnClick} id={evt3.id}>{evt3.eventDate}</div>
                     })}
                     </div>
                 </div>

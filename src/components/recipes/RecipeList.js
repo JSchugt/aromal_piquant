@@ -39,28 +39,31 @@ export const Recipes = () => {
     }
     return (
 
-        <>
-            <div id="recipeTitle">
-                <div id="pageName">Recipes</div>
-                <div>
-                    <fieldset>
-                        <input type="text" onChange={handleSearch} placeholder="🔍"></input>
-                    </fieldset>
-                </div>
-            </div>
-            <div>
-                {recipes.map(recipe => {
-                    return (<Link to={`/recipes/${recipe.id}` } key={"recipe_list_link__"+recipe.id}>
-                        <div className="recipeCard">
-                            {recipe.recipeName}
-                        </div>
-                    </Link>)
-                })}
+        <div id="recipeListContainer">
+            <div className="recipe_list_container">
 
+                <div id="recipeTitle">
+                    <div id="pageName">Recipes</div>
+                    <div>
+                        <fieldset>
+                            <input type="text" onChange={handleSearch} placeholder="🔍"></input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div className="recipe_card_holder">
+                    {recipes.map(recipe => {
+                        return (<Link to={`/recipes/${recipe.id}`} key={"recipe_list_link__" + recipe.id}>
+                            <div className="recipeCard">
+                                {recipe.recipeName}
+                            </div>
+                        </Link>)
+                    })}
+
+                </div>
+                <Link to={`/recipes/create`}>
+                    <button>Add A Recipe</button>
+                </Link>
             </div>
-            <Link to={`/recipes/create`}>
-                <button>Add A Recipe</button>
-            </Link>
-        </>
+        </div>
     )
 }
