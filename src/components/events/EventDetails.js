@@ -15,7 +15,7 @@ export const EventDetails = () => {
         getEventMealByEventId(eventId).then(responseFromApi => {
             setEvent(responseFromApi)
         })
-    }, [])
+    }, [eventId])
     const handleEventMealOnClick = id => {
         history.push(`/meals/${id}`)
     }

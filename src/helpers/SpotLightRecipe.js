@@ -6,55 +6,58 @@ import { splitInstructionsIngrendiens, splitTime } from "./measurements"
 
 export const SpotLightRecipe = ({ recipe }) => {
     const [recipeList, setRecipeList] = useState([])
-    const [instructionList, setInstructionList] = useState([])
-    const [prepTime, setPrepTime] = useState({})
-    const [cookTime, setCookTime] = useState({})
-    const [ingredientList, setIngredientList] = useState([""])
-    const [notes, setNotes] = useState([""])
     useEffect(() => {
-        getMealAndRecipeByMealId(recipe.id).then(responseFromApi => {
-            responseFromApi.map(recipe => {
-                setRecipeList(recipe.recipe)
-                setIngredientList([...splitInstructionsIngrendiens(recipe.recipe.ingredientsList)].map(item => {
-                    return item
-                }))
-                setInstructionList([...splitInstructionsIngrendiens(recipe.recipe.instructions)].map(item => {
-                    return item
-                }))
-                setCookTime({
-                    cookHours: splitTime(recipe.recipe.cookTime)[0],
-                    cookMinutes: splitTime(recipe.recipe.cookTime)[1]
-                })
-                setPrepTime({
-                    prepHours: splitTime(recipe.recipe.prepTime)[0],
-                    prepMinutes: splitTime(recipe.recipe.prepTime)[1]
-                })
-                setNotes(recipe.recipe.notes)
-            })
+        getMealAndRecipeByMealId(recipe.meal.id).then(responseFromApi => {
+            setRecipeList(responseFromApi)
         })
-    }, [])
+    }, [recipe.meal.id])
 
     return (<>
-        <h3>{recipeList.recipeName}</h3>
-        <div className="spotlight-recipe-instruct-ingred">
-            <div>
-                {ingredientList.map((item, i) => {
-                    if (item !== "") {
-                        return <li key={`ingredient__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
-                    }
-                })}
-            </div>
-            <div>
-                {instructionList.map((item, i) => {
-                    if (item !== "") {
-                        return <li key={`instruction__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
-                    }
-                })}
-            </div>
-        </div>
-        <div className="prepCookTimes">Prep: {prepTime.prepHours} hours {prepTime.prepMinutes} minutes</div>
-        <div className="prepCookTimes">Cook: {cookTime.cookHours} hours {cookTime.cookMinutes} minutes </div>
-        <p className="spotLightNotes">{notes}</p>
+        <div className="spotLightLister">
+            {recipeList.map(rec => {
+                return (<>
+                    <div className="spotLighDisplay">
 
+                        <h3>Recipe: {rec.recipe.recipeName}</h3>
+                        <div className="spotlight-recipe-instruct-ingred">
+                            <div>
+
+                                <h4>Ingredients</h4>
+                                <ol>
+                                    {splitInstructionsIngrendiens(rec.recipe.ingredientsList).map((item, i) => {
+                                        if (item !== "") {
+                                            return <li key={`ingredient__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                                        } else {
+                                            return ""
+                                        }
+                                    }
+                                    )}
+                                </ol>
+                            </div>
+                            <div>
+                                <h4>Instructions</h4>
+                                <ol>
+                                    {splitInstructionsIngrendiens(rec.recipe.instructions).map((item, i) => {
+                                        if (item !== "") {
+                                            return <li key={`instruction__${i}`} className="ingredient-Instruction-Spot-Light">{item}</li>
+                                        } else {
+                                            return ""
+                                        }
+                                    })}
+                                </ol>
+                            </div>
+                        </div>
+                        <div className="SpotLightTimes">
+                            <div className="prepCookTimes">Prep: {splitTime(rec.recipe.prepTime)[0]} hours {splitTime(rec.recipe.prepTime)[1]} min</div>
+                            <div className="prepCookTimes">Cook: {splitTime(rec.recipe.cookTime)[0]} hours {splitTime(rec.recipe.cookTime)[1]} min</div>
+                        </div>
+                        <div className="spotLightNotes">
+                            <h3>Notes</h3>
+                            <div >{rec.recipe.notes}</div>
+                        </div>
+                    </div>
+                </>)
+            })}
+        </div>
     </>)
 }

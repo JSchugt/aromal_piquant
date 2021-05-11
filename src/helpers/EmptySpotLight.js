@@ -2,8 +2,6 @@ import React from "react"
 
 
 export const EmptySpotLight = () => {
-
-
     return (
         <>
             <h1>Let's Plan Your Path Ahead</h1>

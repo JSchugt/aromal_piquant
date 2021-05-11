@@ -2,21 +2,50 @@
   "users": [
     {
       "id": 1,
-      "name": "First Last",
+      "name": "",
       "email": ""
     }
   ],
   "recipes": [
     {
-      "id": 1,
-      "userId": 1,
       "recipeName": "",
-      "ingredientsList": [
-        ""
-      ],
-      "instructions": [""],
+      "ingredientsList": "",
+      "instructions": "",
       "notes": "",
-      "prepTime": 0,
-      "cookTime": 0
+      "prepTime": "",
+      "cookTime": "",
+      "userId": 1,
+      "id": 1
     }
+  ],
+  "meals": [
+    {
+      "userId": 1,
+      "mealName": "",
+      "id": 1
+    }
+  ],
+  "eventMeals": [
+    {
+      "mealId": 1,
+      "mealTime": "",
+      "eventId": 1,
+      "id": 1
+    }
+  ],
+  "events": [
+    {
+      "eventDate": "",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "mealRecipes": [
+    {
+      "recipeId": 1,
+      "mealId": 1,
+      "userId": 1,
+      "id": 1
+    }
+  ]
 }

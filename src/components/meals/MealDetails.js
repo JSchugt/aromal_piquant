@@ -8,7 +8,6 @@ import { userStorageKey } from "../auth/authSettings"
 export const MealDetails = () => {
     const { mealsId } = useParams()
     const history = useHistory()
-    const [meals, setMeals] = useState([{}])
     const [mealName, setMealName] = useState([])
     const [recipe, setRecipe] = useState([])
 
@@ -18,14 +17,14 @@ export const MealDetails = () => {
             .then((responseFromAPi) => {
                 if (responseFromAPi.length > 0) {
 
-                    setMeals(responseFromAPi)
+                    // setMeals(responseFromAPi)
                     setMealName(responseFromAPi[0].meal.mealName)
                     setRecipe([...responseFromAPi.map((rec) => {
                         return rec.recipe
                     })])
                 }
             })
-    }, [])
+    }, [mealsId])
     const handleRecipeClick = (evt) => {
         evt.preventDefault()
         history.push(`/recipes/${evt.target.id}`)

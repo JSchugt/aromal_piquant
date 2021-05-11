@@ -1,38 +1,75 @@
-h1{
+h1 {
     font-size: 5em;
 }
-h2{
+
+h2 {
     font-size: 4em;
 }
-h3{
+
+h3 {
     font-size: 3em;
 }
+
 h4 {
     font-size: 2em;
 }
-.spotLightNotes{
-    font-weight: bold;
-    font-size: 2em;
-    background-color: #5BA9D9;
-    color:black
-}
 
-.prepCookTimes{
+.spotLightNotes {
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #5BA9D9;
+    color: black
+}
+.spotLightNotes div {
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #5BA9D9;
+    color: black
+}
+.prepCookTimes {
     background-color: white;
     font-weight: bold;
     font-size: 2em;
+    width: 10em;
 }
 
-.ingredient-Instruction-Spot-Light{
+.ingredient-Instruction-Spot-Light {
     font-weight: bold;
     font-size: 2em;
-
 }
 
-.spotlight-recipe-instruct-ingred{
+.spotlight-recipe-instruct-ingred {
     background-color: #F2bF27;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 4em;
+}
+
+.spotLightH2 {
+    width: fit-content;
+    font-family: 'Fugaz one', cursive;
+    font-size: 4em;
+    background: linear-gradient( to left, rgba(116, 120, 123, 1), rgba(105, 78, 61, .7));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-shadow: -2px -2px 1px rgba(140, 119, 92, .6);
+}
+
+
+
+.eventTilePlanner {
+    font-size: 2em;
+}
+
+.spotLightLister{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 30%;
+    justify-content:space-evenly;
+}
+
+.spotLighDisplay{
+    width: 100em;
 }

@@ -28,6 +28,8 @@ export const RecipeSearch = () => {
             search = baseRecipe.filter(recipe => {
                 if (recipe.recipeName.toLowerCase().includes(userInput.toLowerCase(0))) {
                     return recipe.recipeName
+                } else {
+                    return ""
                 }
             })
             setRecipes(search)
@@ -56,8 +58,8 @@ export const RecipeSearch = () => {
             </div> */}
             <div>
                 {recipes.map(recipe => {
-                    return (<Link to={`/recipes/${recipe.id}`}>
-                        <div className="recipeCard">
+                    return (<Link to={`/recipes/${recipe.id}`}  key={"recipe_search__link"+recipe.id}>
+                        <div key={"recipe_search__"+recipe.id} className="recipeCard">
                             {recipe.recipeName}
                         </div>
                     </Link>)

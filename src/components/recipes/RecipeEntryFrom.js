@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router";
-import { cookTimeToString, ingredientInstructToString, ingredientToString, instructToString, prepTimeToStraing } from "../../helpers/measurements";
+import { cookTimeToString,  ingredientToString, instructToString, prepTimeToStraing } from "../../helpers/measurements";
 import {createNewRecipe, getRecipesByUser} from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings";
 import "./Recipes.css"
@@ -11,8 +11,8 @@ export const RecipeEntryForm = () => {
     const history = useHistory()
     const [ingredientList, setIngredientList] = useState([{ ingredient: "" }]);
     const [instructionList, setInstructionList] = useState([{ instruction: "" }])
-    const [notes, setNotes] = useState([""])
-    const [mealName, setMealName] = useState([""])
+    const [notes, setNotes] = useState("")
+    const [mealName, setMealName] = useState("")
     const [prepTime, setPrepTime] = useState({ prepHours: 0, prepMinutes: 0 })
     const [cookTime, setCookTime] = useState({ cookHours: 0, cookMinutes: 0 })
     // handle input change

@@ -99,12 +99,12 @@ export const delteEventById = (id) => {
 
 }
 
-export const getSpotlighEventMealsByUserIs = (id)=>{
+export const getSpotlighEventMealsByUserIs = (id) => {
     return fetch(`${API.baseUrl}:8088/eventMeals?_expand=meal&userId${id}`)
-    .then((res)=> res.json())
+        .then((res) => res.json())
 }
 
 export const getSpotLightEventByEventId = (id) => {
     return fetch(`${API.baseUrl}:8088/eventMeals?eventId=${id}&_expand=meal&_expand=event`)
-    .then((res)=> res.json())
+        .then((res) => res.json())
 }

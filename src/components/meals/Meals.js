@@ -7,7 +7,6 @@ import "./Meals.css"
 // Create Static meal page until logic is futher filled out
 export const Meals = () => {
     const history = useHistory()
-    let i = 0
     const [userMeals, setUserMeals] = useState([])
     const [meals, setMeals] = useState([""])
     // const [mealsFromUser, setMealsFromUSer] = useState([])
@@ -39,7 +38,8 @@ export const Meals = () => {
             search = meals.filter(recipe => {
                 if (recipe.mealName.toLowerCase().includes(userInput.toLowerCase(0))) {
                     return recipe.mealName
-                }
+                }else {
+                    return false}
             })
             setUserMeals(search)
         } else {
@@ -55,19 +55,15 @@ export const Meals = () => {
         history.push("/meals/create")
     }
     return (<>
-        <div>
-            <h2 id="mealListTitle">Meal List</h2>
-        </div>
-        <div>
+        <div id="mealPageName" key={"meal_page_title"}>
             <fieldset>
-                <label className="mealSearchNameLabel">Meal Search</label>
-                <input className="mealSearchNameInput" type="text" onChange={handleSearch}></input>
+                <div id="mealListTitle" key={"meal_list_section"}>Meal List</div>
+                <input key={"meal_search_bar"} className="mealSearchNameInput" type="text" onChange={handleSearch} placeholder="🔍"></input>
             </fieldset>
-
         </div>
-        <div className="mealListDiv">
+        <div className="mealListDiv" key={"meal_list_section_div"}>
             {(userMeals !== null) ? userMeals.map((meal) => {
-                return (<div>
+                return (<div key={"meal_name_"+meal.id}>
                     <h2 required className="mealListMealName" key={"meal__" + meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
                 </div>)
             }) : ""}

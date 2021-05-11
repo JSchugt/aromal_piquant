@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { userStorageKey } from "../auth/authSettings"
 import { getRecipesByUser } from "../../modules/recipeManager"
-import { createMeal, createMealRecipe, deleteMealRecipeByMealAndRecipeId, getMealAndRecipeByMealId } from "../../modules/mealRecipeManager"
+import {  createMealRecipe, deleteMealRecipeByMealAndRecipeId, getMealAndRecipeByMealId } from "../../modules/mealRecipeManager"
 import { useHistory, useParams } from "react-router"
-import { deleteMealById, getMealsById, updateMealById } from "../../modules/mealManager"
+import {  getMealsById, updateMealById } from "../../modules/mealManager"
 import { confirmAlert } from "react-confirm-alert"
 import "./Meals.css"
 export const MealEdit = () => {
@@ -12,7 +12,6 @@ export const MealEdit = () => {
     const [recipeList, setRecipeList] = useState([0])
     const [mealRecipes, setMealRecipes] = useState([])
     const [recipes, setRecipes] = useState([])
-    const [isSaving, setIsSaving] = useState(false)
     const [mealName, setMealName] = useState([""])
 
     // Get Recipes that the user has to fill the drop down
@@ -29,7 +28,7 @@ export const MealEdit = () => {
             }))
         })
         getMealsById(mealsId).then(res => setMealName(res.mealName))
-    }, [])
+    }, [mealsId])
 
     const handleRemoveRecipeClick = index => {
         confirmAlert({
@@ -60,7 +59,7 @@ export const MealEdit = () => {
     const handleRemoveNewRecipeClick = index => {
         const temp = [...recipeList];
 
-        let deleteItem = temp.splice(index, 1);
+        temp.splice(index, 1);
         setRecipeList(temp);
     }
     const handleAddRecipeClick = (evt) => {
@@ -85,11 +84,11 @@ export const MealEdit = () => {
             
             history.push("/meals")
         } else {
-            hold.forEach(recipe => {
-                createMealRecipe(recipe, parseInt(mealsId)).then(() => { history.push("/meals") })
-            })
+            Promise.all(hold.map((recipe)=> createMealRecipe(recipe, parseInt(mealsId))))
+            .then(() => { history.push("/meals")})
         }
     }
+
     const handleInputChange = (evt, index) => {
         let temp = [...recipeList];
         temp[index] = evt.target.value;

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { getEventsByUserId } from "../../modules/eventsManager"
-import { EventCard } from "./EventCard"
 import "./events.css"
 import { userStorageKey } from "../auth/authSettings"
+import { monthToString } from "../../helpers/dateHelper"
 
 export const EventPlanner = () => {
     const [events, setEvents] = useState([])
     const [historicEvents, setHistoricEvents] = useState([])
     const history = useHistory()
     const getSoonest = (eventsToBeSorted) => {
-        const now = new Date()
+        // const now = new Date()
 
         let sorted = eventsToBeSorted.sort(
             (currentEntry, nextEntry) =>
@@ -41,21 +41,27 @@ export const EventPlanner = () => {
         <>
             <div className="allEvents">
                 <div>
-                    <h2>Current And Pending Events</h2>
+                    <h2 className="planColumn">Plans To Be</h2>
+                    <Link to={"/events/create"}>
+                        <button>Add Event</button>
+                    </Link>
+                    <div className="grid-container">
                     {events.map(evt => {
-                        return <div onClick={handleEventOnClick} className="eventDatePlanner"><h2 id={evt.id}>{evt.eventDate}</h2></div>
+                        // Gets date for event converts it to MMM DD and returns tile for the grid
+                        return <div onClick={handleEventOnClick}  id={evt.id}>{monthToString(evt.eventDate.slice(5))}</div>
                     })}
+                    </div>
                 </div>
                 <div>
-                    <h2>Historic Events</h2>
-                {historicEvents.map(evt3 => {
-                        return <div onClick={handleEventOnClick} className="eventDatePlanner"><h2 id={evt3.id}>{evt3.eventDate}</h2></div>
+                    <h2 className="planColumn">Historic Events</h2>
+                    <div className="historic-grid-container">
+                    {historicEvents.map(evt3 => {
+                        return <div onClick={handleEventOnClick} id={evt3.id}>{evt3.eventDate}</div>
                     })}
+                    </div>
                 </div>
             </div>
-            <Link to={"/events/create"}>
-                <button>Add Event</button>
-            </Link>
+
         </>
     )
 }

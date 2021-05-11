@@ -45,7 +45,7 @@ export const Login = () => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Aromal Piquant</h1>
+                    <h1>Checkered Blast</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label id="email" htmlFor="inputEmail"> Email address </label>

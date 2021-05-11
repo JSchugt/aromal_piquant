@@ -27,7 +27,7 @@ export const EventEdit = () => {
                     })
             }
         })
-    }, [])
+    }, [eventId])
 
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export const EventEdit = () => {
             mealTime: "00:00",
             eventId: eventId
         }])
-    }, [])
+    }, [eventId])
 
 
     const handleOnChange = (evt) => {
@@ -52,14 +52,13 @@ export const EventEdit = () => {
         temp["eventDate"] = evt.target.value
         setEventObj(temp)
     }
-    const handleOnChangeTime = (meal, index, evt) => {
+    const handleOnChangeTime = (meal, index, evt, eventMealId) => {
         let tempObj = {
             mealId: meal,
-            eventId: meal.eventId,
+            eventId: parseInt(eventId),
             mealTime: evt.target.value,
         }
-        editEventMealTime(tempObj, meal.id)
-        .then(responseFromApi => {})
+        editEventMealTime(tempObj, eventMealId)
     }
     const handleRemoveMeal = (id, index, evt) => {
         confirmAlert({
@@ -111,10 +110,7 @@ export const EventEdit = () => {
         }
         setNewEditMeals([...temp])
     }
-    // meals added to the edit new
-    const handleDeleteEvent = () => {
 
-    }
     const handEventMealEditSave = () => {
         let temp = []
         for (let i = 0; i < newEditMeals.length; i++) {
@@ -124,25 +120,15 @@ export const EventEdit = () => {
         }
         if (temp.length > 0) {
             temp.forEach((sendObj) => {
-                
-                
-                
-                ////////////////////////////////////////////
-                
-                
-                
-                
-                
-                
-                
-                if( sendObj.mealId !== 0 && sendObj.mealId !== "0"){
-
-                    return updateEventEventMeals(sendObj) }
-                })
+                if (sendObj.mealId !== 0 && sendObj.mealId !== "0") {
+                    return updateEventEventMeals(sendObj)
+                }
+            })
             eventEditDateUpdate(eventObj.eventDate, eventId)
             getEventMealByEventId(eventId).then(() => { history.push(`/events/${eventId}`) })
 
         } else {
+
             eventEditDateUpdate(eventObj.eventDate, eventId)
             getEventMealByEventId(eventId).then(() => { history.push(`/events/${eventId}`) })
         }
@@ -152,7 +138,7 @@ export const EventEdit = () => {
         <button onClick={handEventMealEditSave}>Save Edit</button>
         <input type="date" onChange={handleOnChange} id="eventDate" defaultValue={eventObj.eventDate}></input>
         {event.map((meal, i) => {
-            return <EventEditCard key={meal.id} meal={meal} index={i} userMeals={userMeals} handleRemoveMeal={handleRemoveMeal} handleOnChangeTime={handleOnChangeTime}
+            return <EventEditCard key={meal.id} eventMealId={meal.id} meal={meal} index={i} userMeals={userMeals} handleRemoveMeal={handleRemoveMeal} handleOnChangeTime={handleOnChangeTime}
             />
         })}
         {newEditMeals.map((meal, i) => {
