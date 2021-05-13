@@ -56,7 +56,7 @@ export const EventPlanner = () => {
                     <h2 className="planColumn">Historic Events</h2>
                     <div className="historic-grid-container">
                     {historicEvents.map(evt3 => {
-                        return <div key={evt3.id} onClick={handleEventOnClick} id={evt3.id}>{evt3.eventDate}</div>
+                        return <div key={evt3.id} onClick={handleEventOnClick} id={evt3.id}>{monthToString(evt3.eventDate.slice(5))}</div>
                     })}
                     </div>
                 </div>

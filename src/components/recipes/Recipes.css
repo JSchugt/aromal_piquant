@@ -1,11 +1,12 @@
 .recipeCard {
-    background-color: #ffffff;
+    font-family: 'Fugaz one', cursive;
     /* border-radius: 10px; */
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
     font-size: 3em;
     word-wrap: normal;
+    color: black;
 }
 
 .recipeEditFields {
@@ -47,24 +48,21 @@ button {
 .recipeIngredientsDisplay {
     align-self: center;
     padding: .7em;
-    /* min-width: 6em; */
-    /* max-width: 100%; */
+    padding-left: 1.5em;
     width: fit-content;
-    /* border-radius: 10%; */
-    background-color: lightcoral;
+    background-color:rgba(91,169,217,.8);
+    border-radius: 10%;
 }
 
 .recipeInstructionsDisplay {
     align-self: center;
     padding-left: .7em;
-    /* background-color: #ffffff; */
+    padding-left: 1.5em;
     min-width: 6em;
     max-width: fit-content;
-    /* border-radius: 10%; */
 }
 
 .recipeCardNotes {
-    /* background-color: lightblue; */
     width: fit-content;
 }
 
@@ -76,7 +74,6 @@ button {
 .recipeCardTime {
     padding: .5em;
     padding-top: 0em;
-    /* background-color: lightblue; */
     width: fit-content;
 }
 
@@ -165,15 +162,10 @@ button {
     align-content: center;
 }
 
-/* 
-.recipeCardTime{
-    background-color: lightcoral;
-} */
-
 #recipe_card_button_section {
     margin-left: 30%;
 }
 
-.recipe_list_container{
-        align-self: center;
+.recipe_list_container {
+    align-self: center;
 }

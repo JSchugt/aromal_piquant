@@ -1,5 +1,5 @@
 :root{
-    --border-color: blue;
+    --border-color: #BF1304;
 }
 
 h1 {
@@ -40,7 +40,7 @@ h4 {
     font-weight: bold;
     font-size: 2em;
     width: 100%;
-    background-color: tomato;
+    background-color: #0487d9;
 }
 
 .ingredient-Instruction-Spot-Light {
@@ -97,29 +97,35 @@ li {
 
 .spotLightContainer{
     display: flex;
-    
+    padding-left: 2em;
 align-self: center;
-background-color: rgba(98,166,117,.5);
+background-color: rgba(255, 255, 255, .7);
+border: dashed 2px var(--border-color);
 width: fit-content;
 }
 
 /* Date being displayed */
 .eventDatePlanner{
+    color: white;
     margin: auto;
+    width:fit-content;
+    padding: 0 1em 0 1em;
+    background-color: #0487d9;
+    border-bottom-right-radius: 40%;
+    border-top-left-radius: 40%;
 }
 .eventDatePlanner div{
-    
     margin: auto;
 }
 .spot_ligh_meal_name{
+    font-family: 'Fugaz one', cursive;
+    font-weight: bolder;
+    margin-top: 1em;
     display:flex;
-    /* flex-direction: row; */
-    /* margin-left: 20%; */
     align-self: center;
-    /* background-color: purple; */
     width: fit-content;
     overflow-y: hidden;
-    border-bottom: solid 10px blue;
+    border-bottom: solid 10px #f2bf27;
 }
 
 .spot_ligh_recipe_name_above{
@@ -131,6 +137,6 @@ width: fit-content;
     font-weight: bold;
 }
 .empty_spot_light_splash:hover{
-    color:blue;
+    color:#0487d9;
 }
 
