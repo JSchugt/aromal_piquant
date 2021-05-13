@@ -46,20 +46,20 @@ export const EventDetails = () => {
 
 
 
-    return (<>
+    return (<div>
         <h1>Event Details</h1>
         <Link to={`/events/${eventId}/edit`}>
             <button >Edit Event</button>
         </Link>
         <button onClick={() => { handleDeleteEvent() }}>Delete</button>
         {event.map(meal => {
-            return (<>
+            return (<div key={meal.id}>
                 <EventCard
                     key={"meal__" + meal.id}
                     meal={meal}
                     handleEventMealOnClick={handleEventMealOnClick}
                 />
-            </>)
+            </div>)
         })}
-    </>)
+    </div>)
 }

@@ -15,10 +15,10 @@ export const SpotLightRecipe = ({ recipe }) => {
     return (<>
         <div className="spotLightLister">
             {recipeList.map(rec => {
-                return (<>
-                    <div className="spotLighDisplay">
+                return (
+                    <div key={rec.id} className="spotLighDisplay">
 
-                        <h3>Recipe: {rec.recipe.recipeName}</h3>
+                        <div className="spot_ligh_recipe_name_above">Recipe: {rec.recipe.recipeName}</div>
                         <div className="spotlight-recipe-instruct-ingred">
                             <div>
 
@@ -56,7 +56,7 @@ export const SpotLightRecipe = ({ recipe }) => {
                             <div >{rec.recipe.notes}</div>
                         </div>
                     </div>
-                </>)
+                )
             })}
         </div>
     </>)

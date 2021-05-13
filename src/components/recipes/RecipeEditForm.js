@@ -112,7 +112,7 @@ export const RecipeEditForm = () => {
 
     }
     return (
-        <>
+        <div>
             <button onClick={handleSaveRecipe}>Save</button>
             <button onClick={handleDeleteRecipe}>Delete</button>
             <input type="text" name="mealName" onChange={handleNotesOnChange} id="mealName" defaultValue={mealName} />
@@ -120,10 +120,9 @@ export const RecipeEditForm = () => {
                 <div className="ingredientField">
                     {ingredients.map((x, j) => {
                         return (
-                            <>
-                                <div className="box" key={`ingredient__${j}`} >
+                            <div key={`ingredient__${j}`}>
+                                <div className="box"  >
                                     <input
-
                                         name="ingredient"
                                         onChange={evt => handleInputChange(evt, j)}
                                         defaultValue={x}
@@ -135,14 +134,14 @@ export const RecipeEditForm = () => {
                                         {ingredients.length - 1 === j && <button onClick={handleAddIngredientClick}>Add</button>}
                                     </div>
                                 </div>
-                            </>);
+                            </div>);
                     })}
                 </div>
                 <div>
                     {instructions.map((y, i) => {
                         return (
-                            <>
-                                <div className="box" key={`instruction__${i}`}>
+                            <div key={`instruction__${i}`}>
+                                <div className="box" >
                                     <input
                                         name="instruction"
                                         onChange={evt => handleInstructionInputChange(evt, i)}
@@ -155,7 +154,7 @@ export const RecipeEditForm = () => {
                                         {instructions.length - 1 === i && <button onClick={handleAddInstructionClick}>Add</button>}
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )
                     })}
                 </div>
@@ -173,6 +172,6 @@ export const RecipeEditForm = () => {
             <div>
                 <textarea id="notes" name="notes" defaultValue={notes} onChange={handleNotesOnChange}></textarea>
             </div>
-        </>
+        </div>
     );
 }

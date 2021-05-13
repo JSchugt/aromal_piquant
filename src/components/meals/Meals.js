@@ -38,8 +38,9 @@ export const Meals = () => {
             search = meals.filter(recipe => {
                 if (recipe.mealName.toLowerCase().includes(userInput.toLowerCase(0))) {
                     return recipe.mealName
-                }else {
-                    return false}
+                } else {
+                    return false
+                }
             })
             setUserMeals(search)
         } else {
@@ -54,20 +55,23 @@ export const Meals = () => {
         evt.preventDefault()
         history.push("/meals/create")
     }
-    return (<>
-        <div id="mealPageName" key={"meal_page_title"}>
-            <fieldset>
-                <div id="mealListTitle" key={"meal_list_section"}>Meal List</div>
-                <input key={"meal_search_bar"} className="mealSearchNameInput" type="text" onChange={handleSearch} placeholder="🔍"></input>
-            </fieldset>
+    return (<div id="mealHolder">
+        <div className="meal_holder_list">
+
+            <div id="mealPageName" key={"meal_page_title"}>
+                <fieldset>
+                    <div id="mealListTitle" key={"meal_list_section"}>Meal List</div>
+                    <input key={"meal_search_bar"} className="mealSearchNameInput" type="text" onChange={handleSearch} placeholder="🔍"></input>
+                </fieldset>
+            </div>
+            <div className="mealListDiv" key={"meal_list_section_div"}>
+                {(userMeals !== null) ? userMeals.map((meal) => {
+                    return (<div key={"meal_name_" + meal.id}>
+                        <h2 required className="mealListMealName" key={"meal__" + meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
+                    </div>)
+                }) : ""}
+                <button onClick={handleCreateMeal}>Add A Meal</button>
+            </div>
         </div>
-        <div className="mealListDiv" key={"meal_list_section_div"}>
-            {(userMeals !== null) ? userMeals.map((meal) => {
-                return (<div key={"meal_name_"+meal.id}>
-                    <h2 required className="mealListMealName" key={"meal__" + meal.id} id={meal.id} onClick={handleMealOnClick}>{meal.mealName}</h2>
-                </div>)
-            }) : ""}
-            <button onClick={handleCreateMeal}>Add A Meal</button>
-        </div>
-    </>)
+    </div>)
 }

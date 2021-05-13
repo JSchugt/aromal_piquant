@@ -53,32 +53,33 @@ export const MealEntryForm = () => {
     }
     // Meal Create Page
     return (<>
-        <h1 key={"create_meal_page_title"}>Create Meal Page</h1>
-        <div key={"create_meal_header"}>
-            <input key={"save_meal_meal_entry"} type="text" placeholder="Enter Meal Name " id="mealName"
+        <h1 >Create Meal Page</h1>
+        <div>
+            <input type="text" placeholder="Enter Meal Name " id="mealName"
                 onChange={handleSaveNameChange} />
-            <button key={"handle_save_meal_meal_enatry"} onClick={handleSaveMeal}>Save Meal</button>
+            <button onClick={handleSaveMeal}>Save Meal</button>
         </div>
-        <div key={"meal_listing_section"}>
+        <div>
 
-        {recipeList.map((x, i) => {
-            return (
-                <>
-                    <select key={"meal_drop_select"} onChange={evt => handleInputChange(evt, i)} placeholder="Select A Recipe">
-                        <option key={"default_value_0"}defaultValue={0}>Select A recipe</option>
-                        {recipes.map((recipe) => {
-                            return <option key={"option_meal_entry"+recipe.id} id={recipe.id} value={recipe.id} >{recipe.recipeName}</option>
-                        })}
-                    </select>
-                    <div className="btn-box" key={"meal_entry_add_remove_button"}>
-                        {recipeList.length !== 1 && <button key={"remove_button_meal_entry"}
-                            className="recipeRemoveButton"
-                            onClick={() => handleRemoveRecipeClick(i)}>Remove</button>}
-                        {recipeList.length - 1 === i && <button key={"handle_add_click_meal_entry"} onClick={handleAddRecipeClick}>Add</button>}
+            {recipeList.map((x, i) => {
+                return (
+                    <div key={i}>
+                        <select onChange={evt => handleInputChange(evt, i)} placeholder="Select A Recipe">
+                            <option defaultValue={0}>Select A recipe</option>
+                            {recipes.map((recipe) => {
+                                return <option key={recipe.id} id={recipe.id} value={recipe.id} >{recipe.recipeName}</option>
+                            })}
+                        </select>
+                        <div className="btn-box" >
+                            {recipeList.length !== 1 && <button 
+                                className="recipeRemoveButton"
+                                onClick={() => handleRemoveRecipeClick(i)}>Remove</button>}
+                            {recipeList.length - 1 === i && <button onClick={handleAddRecipeClick}>Add</button>}
+                        </div>
                     </div>
-                </>
-            )
-        })}
+
+                )
+            })}
         </div>
 
     </>)

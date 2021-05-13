@@ -19,18 +19,20 @@ export const SpotLight = ({ eventMeal }) => {
             })
     }, [eventMeal])
     return (<>
-            {spotLightMeal.map((item, i) => {
-                return (<>
-                    <div key={"spotligh__" + i}>
-                        <h3 key={"spotLightH3__" + i}>{item.meal.mealName}</h3>
-                        <h4 key={"spotLightH4__" + i}>{item.mealTime}</h4>
+        {spotLightMeal.map((item, i) => {
+            return (
+                <div key={item.id} className="spot_ligh_meal_name">
+                    <div >
+                        <h3 >{item.meal.mealName}</h3>
+                        <h4 >{item.mealTime}</h4>
                     </div>
                     <SpotLightRecipe
-                        key={"key_spot_item" + item.id}
+                        
                         recipe={item}
                     />
-                </>)
-            })}
+                </div>
+            )
+        })}
     </>)
 
 }

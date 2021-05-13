@@ -88,16 +88,15 @@ export const RecipeEntryForm = () => {
         getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push("/recipes"))
     }
     return (
-        <>
+        <div>
             <input type="text" name="mealName" onChange={handleNotesOnChange} id="mealName" placeholder="Meal Name" />
             <div className="entryFields">
                 <div className="ingredientField">
                     {ingredientList.map((x, i) => {
                         return (
-                            <>
-                                <div className="box" key={`ingredient__${i}`} >
+                            <div key={`ingredient__${i}`} >
+                                <div className="box" >
                                     <input
-
                                         name="ingredient"
                                         placeholder={"ingredient " + (i + 1) + ":"}
                                         value={x.ingredient}
@@ -110,14 +109,14 @@ export const RecipeEntryForm = () => {
                                         {ingredientList.length - 1 === i && <button onClick={handleAddIngredientClick}>Add</button>}
                                     </div>
                                 </div>
-                            </>);
+                            </div>);
                     })}
                 </div>
                 <div>
                     {instructionList.map((x, i) => {
                         return (
-                            <>
-                                <div className="box" key={`instruction__${i}`}>
+                            <div  key={`instruction__${i}`}>
+                                <div className="box">
                                     <input
 
                                         name="instruction"
@@ -132,7 +131,7 @@ export const RecipeEntryForm = () => {
                                         {instructionList.length - 1 === i && <button onClick={handleAddInstructionClick}>Add</button>}
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )
                     })}
                 </div>
@@ -150,6 +149,6 @@ export const RecipeEntryForm = () => {
                 <textarea className="entryNotes" id="notes" name="notes" placeholder="Note for recipe" onChange={handleNotesOnChange}></textarea>
             </div>
             <button onClick={handleSaveRecipe}>Save Recipe</button>
-        </>
+        </div>
     );
 }

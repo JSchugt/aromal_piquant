@@ -33,68 +33,77 @@ export const RecipeCard = () => {
         deleteRecipeById(recipeId).then(() => getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push("/recipes")))
     }
     return (
-        <>
-            <button onClick={handleDeleteRecipe}>Delete</button>
-            {/* <button>Select</button> */}
-            <Link to={`/recipes/${recipeId}/edit`} key={"recipe_card_to_edit"}>
-                <button>Edit</button>
-            </Link>
-            <Link to={"/recipes/create"} key={"recipe_card_to_create"}>
-                <button>New Recipe</button>
-            </Link>
-            <Link to={"/recipes/search"} key={"recipe_card_to_search"}>
-                <button>Search</button>
-            </Link>
+        <div id="recide_card_display">
             <div>
-                <h2>{recipe.recipeName}</h2>
-                {/* Begining of ingredients and redcipes */}
-                <div className="recipeTopDisplay">
 
-                    <div className="recipeInstructionsDisplay" key={"recipe_instruction_list__" + recipe}>
-                        <h3>Instructions:</h3>
-                        {<ol>
-                            {instructions.map((item, index) => {
-                                if (item !== "") {
-                                    return (
-                                        <li className="recipeInternale" key={"instruction_recipe_card__" + index} >
-                                            {item}
-                                        </li>
-                                    )
-                                } else {
-                                    return <></>
-                                }
-                            })
-                            }</ol>}
-                    </div>
-                    <div className="recipeIngredientsDisplay" key={"recipe_ingredient_list__" + recipeId}>
-                        <h3>Ingredients:</h3>
-                        <ol className="recipeInternale">
-                            {ingredients.map((item, index) => {
-                                if (item !== "") {
-                                    return (
-                                        <li key={"ingredients_recipe_card__" + index}>
-                                            {item}
-                                        </li>
-                                    )
-                                } else {
-                                    return <></>
-                                }
-                            })}
-                        </ol>
-                    </div>
+                <div id="recipe_card_button_section">
+                    <button onClick={handleDeleteRecipe}>Delete</button>
+                    {/* <button>Select</button> */}
+
+                    <Link to={`/recipes/${recipeId}/edit`} key={"recipe_card_to_edit"}>
+                        <button>Edit</button>
+                    </Link>
+                    <Link to={"/recipes/create"} key={"recipe_card_to_create"}>
+                        <button>New Recipe</button>
+                    </Link>
+                    <Link to={"/recipes/search"} key={"recipe_card_to_search"}>
+                        <button>Search</button>
+                    </Link>
                 </div>
-                {/* End of ingredients and instructions */}
-                <div className="recipeCardNotes" key={"recipe_notes__" + recipeId}>
-                    <h3 >Notes:</h3>
-                    {recipe.notes}
-                </div>
-                <div className="recipeCardTime" key={"recipe_card_time_seciton" + recipeId}>
-                    <h3>Prep Time</h3>
-                    <div key={"recipe_prep_time__" + recipeId} className="recipePrepCookTime">{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
-                    <h3>Cook Time</h3>
-                    <div key={"recipe_cook_time__" + recipeId} className="recipePrepCookTime">{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
+                <div>
+                    {/* Begining of ingredients and redcipes */}
+                    <h2 id='recipe_name_header'>{recipe.recipeName}</h2>
+                    <div className="recipeTopDisplay">
+                        <div className="recipeIngredientsDisplay" key={"recipe_ingredient_list__" + recipeId}>
+                            <h3>Ingredients:</h3>
+                            <ol className="recipeInternale">
+                                {ingredients.map((item, index) => {
+                                    if (item !== "") {
+                                        return (
+                                            <li key={"ingredients_recipe_card__" + index}>
+                                                {item}
+                                            </li>
+                                        )
+                                    } else {
+                                        return true
+                                    }
+                                })}
+                            </ol>
+                        </div>
+                        <div className="recipeInstructionsDisplay" key={"recipe_instruction_list__" + recipe}>
+                            <h3>Instructions:</h3>
+                            {<ol>
+                                {instructions.map((item, index) => {
+                                    if (item !== "") {
+                                        return (
+                                            <li className="recipeInternale" key={"instruction_recipe_card__" + index} >
+                                                {item}
+                                            </li>
+                                        )
+                                    } else {
+                                        return true
+                                    }
+                                })
+                                }</ol>}
+                        </div>
+
+                    </div>
+                    {/* End of ingredients and instructions */}
+                    <div className="recipeNotesSection">
+
+                        <div className="recipeCardNotes" key={"recipe_notes__" + recipeId}>
+                            <h3 >Notes:</h3>
+                            <div>{recipe.notes}</div>
+                        </div>
+                        <div className="recipeCardTime" key={"recipe_card_time_seciton" + recipeId}>
+                            <h3>Prep Time</h3>
+                            <div key={"recipe_prep_time__" + recipeId} className="recipePrepCookTime">{prepTime.prepHours} Hours, {prepTime.prepMinutes} minutes</div>
+                            <h3>Cook Time</h3>
+                            <div key={"recipe_cook_time__" + recipeId} className="recipePrepCookTime">{cookTime.cookHours} Hours, {cookTime.cookMinutes} minutes</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

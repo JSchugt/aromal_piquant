@@ -133,7 +133,7 @@ export const EventEdit = () => {
             getEventMealByEventId(eventId).then(() => { history.push(`/events/${eventId}`) })
         }
     }
-    return (<>
+    return (<div>
         <h1> Edit Event Set For</h1>
         <button onClick={handEventMealEditSave}>Save Edit</button>
         <input type="date" onChange={handleOnChange} id="eventDate" defaultValue={eventObj.eventDate}></input>
@@ -145,5 +145,5 @@ export const EventEdit = () => {
             return <EventEditAdd key={i} handleOnChange={handleNewTimeOnChnage} handleAdd={handleNewEventMealAddClick} handleRemove={hanldeNewEventEditRemoveOnClick} length={newEditMeals.length} newEditMeal={meal} userMeals={userMeals} i={i}
             />
         })}
-    </>)
+    </div>)
 }

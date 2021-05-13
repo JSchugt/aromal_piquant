@@ -1,10 +1,12 @@
 .recipeCard {
-    background-color: #ffffff;
-    border-radius: 10px;
+    font-family: 'Fugaz one', cursive;
+    /* border-radius: 10px; */
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
     font-size: 3em;
+    word-wrap: normal;
+    color: black;
 }
 
 .recipeEditFields {
@@ -39,35 +41,39 @@ button {
 
 .recipeTopDisplay {
     display: flex;
-    flex-direction: row;
-    align-content: space-between;
+    flex-direction: column;
+    align-content: center;
 }
 
 .recipeIngredientsDisplay {
-    margin-left: 10em;
+    align-self: center;
     padding: .7em;
-    min-width: 6em;
-    max-width: fit-content;
+    padding-left: 1.5em;
+    width: fit-content;
+    background-color:rgba(91,169,217,.8);
     border-radius: 10%;
 }
 
 .recipeInstructionsDisplay {
+    align-self: center;
     padding-left: .7em;
-    background-color: #ffffff;
+    padding-left: 1.5em;
     min-width: 6em;
     max-width: fit-content;
-    border-radius: 10%;
 }
 
 .recipeCardNotes {
-    background-color: white;
-    max-width: 20em;
+    width: fit-content;
+}
+
+.recipeCardNotes div {
+    font-size: 2em;
+    width: 20em
 }
 
 .recipeCardTime {
     padding: .5em;
     padding-top: 0em;
-    /* background-color: lightblue; */
     width: fit-content;
 }
 
@@ -116,13 +122,50 @@ button {
 }
 
 #pageName {
-    width:fit-content;
+    width: fit-content;
     font-family: 'Fugaz one', cursive;
-    
     font-size: 4em;
     background: linear-gradient( to left, rgba(116, 120, 123, 1), rgba(105, 78, 61, .7));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    text-shadow: -2px -2px 1px rgba(140,119,92,.6);
+    text-shadow: -2px -2px 1px rgba(140, 119, 92, .6);
 }
 
+#recipeListContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: fit-content;
+    background-color: rgba(200, 200, 200, .5);
+    height: 80em;
+}
+
+#recide_card_display {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: rgba(255, 255, 255, .5);
+    width: fit-content;
+    margin-left: 15%;
+}
+
+#recipe_name_header {
+    display: flex;
+    align-content: center;
+    margin-left: 30%;
+    margin-top: 0px;
+}
+
+.recipeNotesSection {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+#recipe_card_button_section {
+    margin-left: 30%;
+}
+
+.recipe_list_container {
+    align-self: center;
+}

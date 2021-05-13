@@ -39,13 +39,16 @@ export const Login = () => {
 
     return (
         <main className="container--login">
+            <div className="checkeredLogin">
+
+                <div id="appNameLogin">Checkered Blast</div>
+            </div>
             <dialog className="dialog dialog--auth" open={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Checkered Blast</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label id="email" htmlFor="inputEmail"> Email address </label>
@@ -58,7 +61,7 @@ export const Login = () => {
                             onChange={handleInputChange} />
                     </fieldset>
                     <fieldset id="emailSubmit">
-                        <button  type="submit">
+                        <button type="submit">
                             Sign in
                         </button>
                     </fieldset>
