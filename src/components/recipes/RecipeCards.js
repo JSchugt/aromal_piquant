@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
 import { deleteRecipeById, getRecipeById, getRecipesByUser } from "../../modules/recipeManager"
 import { userStorageKey } from "../auth/authSettings"
-
+import {confirmAlert}  from "react-confirm-alert"
 
 export const RecipeCard = () => {
     const { recipeId } = useParams()
@@ -30,8 +30,32 @@ export const RecipeCard = () => {
         })
     }, [recipeId])
     const handleDeleteRecipe = () => {
-        deleteRecipeById(recipeId).then(() => getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push("/recipes")))
+
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-ui'>
+                        <h1>Are you sure?</h1>
+                        <p>Confirm You Want To Delete This Recipe</p>
+                        <p>This can't be undone</p>
+                        <button onClick={onClose}>No</button>
+                        <button
+                            onClick={() => {
+                                deleteRecipeById(recipeId).then(() => getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push("/recipes")))
+
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                        </button>
+                    </div>
+                );
+            }
+        });
     }
+
+
+    // start JSX section
     return (
         <div id="recide_card_display">
             <div>

@@ -1,17 +1,20 @@
 import React from "react"
 
-export const IngredientsLister = ({ Ingredients, index, handleOnChnage }) => {
+export const IngredientsInstructionLister = ({ insIng, length, handleOnChnage, handleAdd, handleRemove, index }) => {
 
     return (
-        <>
-            <form action="">
-                <div id={"step__" + index}>
-                <fieldset className="recipeEditFields">
-                    <label form="instructions" className="instructions_steps">Item: {index+1}</label>
-                    <input type="text" id={"ingredients__"+index} defaultValue={Ingredients} onChange={handleOnChnage}></input>
-                </fieldset>
-                </div>
-            </form>
-        </>
+        <div className="box"  >
+            <input
+                name="insIng"
+                onChange={evt => handleOnChnage(evt, index)}
+                defaultValue={insIng}
+            />
+            <div className="btn-box">
+                {length !== 1 && <button
+                    className="recipeRemoveButton"
+                    onClick={() => handleRemove(index)}>Remove</button>}
+                {length - 1 === index && <button onClick={handleAdd}>Add</button>}
+            </div>
+        </div>
     )
 }

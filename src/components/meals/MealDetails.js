@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import { deleteMealById, getMealRecipeByMealId } from "../../modules/mealManager"
 import { getMealsRecipeByUserId } from "../../modules/mealRecipeManager"
 import { userStorageKey } from "../auth/authSettings"
+import { confirmAlert } from "react-confirm-alert"
+
 
 export const MealDetails = () => {
     const { mealsId } = useParams()
@@ -32,10 +34,32 @@ export const MealDetails = () => {
 
     const handleDeleteMeal = (evt) => {
         evt.preventDefault()
-        deleteMealById(mealsId)
-            .then(() => { getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey)) })
-        history.push("/meals")
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-ui'>
+                        <h1>Are you sure?</h1>
+                        <p className="cUiP">Confirm You Want To Delete This Meal</p>
+                        <p className="cUiP">This can't be undone</p>
+                        <button onClick={onClose}>No</button>
+                        <button
+                            onClick={() => {
+                                deleteMealById(mealsId)
+                                    .then(() => { getMealsRecipeByUserId(sessionStorage.getItem(userStorageKey)) })
+                                history.push("/meals")
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                        </button>
+                    </div>
+                );
+            }
+        });
+
     }
+
+    // Start jsx
     return (<div id="mainMealList">
 
         <h1>{mealName}</h1>

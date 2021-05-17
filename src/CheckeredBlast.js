@@ -6,8 +6,8 @@ import {Login} from './components/auth/Login'
 import {Register} from './components/auth/Register'
 import {Footer} from "./components/nav/Footer"
 import {userStorageKey} from "./components/auth/authSettings"
-import './Aromal_Piquant.css';
-export const AromalPiquant = () => {
+import './Checkered_Blast.css';
+export const CheckeredBlast = () => {
   return <>
     <Route
       render={() => {

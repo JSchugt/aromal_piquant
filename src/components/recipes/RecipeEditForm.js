@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import { cookTimeToString, prepTimeToStraing, splitInstructionsIngrendiens, splitTime } from "../../helpers/measurements"
 import { getRecipeById, getRecipesByUser, deleteRecipeById, updateRecipeById } from "../../modules/recipeManager"
-import {userStorageKey} from "../auth/authSettings"
+import { userStorageKey } from "../auth/authSettings"
+import { IngredientsInstructionLister } from "./Ingredients"
 
 
 export const RecipeEditForm = () => {
@@ -20,8 +21,8 @@ export const RecipeEditForm = () => {
     useEffect(() => {
         getRecipeById(recipeId).then((recipeFromApi) => {
             // setRecipe(recipeFromApi);
-                setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
-          // setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+            setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
+            // setInstructions(splitInstructionsIngrendiens(recipeFromApi.instructions));
             setIngredients(splitInstructionsIngrendiens(recipeFromApi.ingredientsList));
             setNotes(recipeFromApi.notes);
             setMealName(recipeFromApi.recipeName);
@@ -29,9 +30,9 @@ export const RecipeEditForm = () => {
                 cookHours: splitTime(recipeFromApi.cookTime)[0],
                 cookMinutes: splitTime(recipeFromApi.cookTime)[1]
             });
-            setPrepTime( {
+            setPrepTime({
                 prepHours: splitTime(recipeFromApi.prepTime)[0],
-                prepMinutes: splitTime(recipeFromApi.prepTime)[1] 
+                prepMinutes: splitTime(recipeFromApi.prepTime)[1]
             });
         })
     }, [recipeId])
@@ -55,22 +56,22 @@ export const RecipeEditForm = () => {
     };
     // handle click event of the Remove button
     const handleRemoveIngredientClick = index => {
-        const temp = [...ingredients];
-        // let kick = temp.splice(index, 1);
-        setIngredients(temp);
+        let temp = [...ingredients];
+        temp.splice(index, 1);
+        setIngredients([...temp]);
     };
     const handleRemoveInstructionClick = index => {
-        const temp = [...instructions];
-        temp.splice(index+1, 1);
-        setInstructions(temp);
+        let temp = [...instructions];
+        temp.splice(index, 1);
+        setInstructions([...temp]);
     };
     // handle click event of the Add button
     const handleAddIngredientClick = () => {
-        setIngredients([...ingredients,  "" ]);
+        setIngredients([...ingredients, ""]);
     };
     // handle click event of the Add button
     const handleAddInstructionClick = () => {
-        setInstructions([...instructions,  "" ]);
+        setInstructions([...instructions, ""]);
     };
     const handleNotesOnChange = (evt) => {
         if (evt.target.id === "notes") {
@@ -80,13 +81,13 @@ export const RecipeEditForm = () => {
         }
     }
     const handleTimeOnChange = (evt) => {
-        if(evt.target.name === "cookHours" || evt.target.name === "cookMinutes"){
-            let temp = {...cookTime}
+        if (evt.target.name === "cookHours" || evt.target.name === "cookMinutes") {
+            let temp = { ...cookTime }
             temp[evt.target.name] = evt.target.value
             setCookTime(temp)
 
-        }else if (evt.target.name === "prepHours" || evt.target.name === "prepMinutes"  ){
-            let temp = {...prepTime}
+        } else if (evt.target.name === "prepHours" || evt.target.name === "prepMinutes") {
+            let temp = { ...prepTime }
             temp[evt.target.name] = evt.target.value
             setPrepTime(temp)
         }
@@ -100,7 +101,7 @@ export const RecipeEditForm = () => {
             instructions: instructions.join("_-_-_-_"),
             notes: notes,
             prepTime: prepTimeToStraing(prepTime),
-            cookTime:  cookTimeToString(cookTime),
+            cookTime: cookTimeToString(cookTime),
             userId: parseInt(sessionStorage.getItem(userStorageKey)),
             id: recipeId
         }
@@ -108,7 +109,7 @@ export const RecipeEditForm = () => {
         //Get the recipes from the data base
         // then go to the recipe just editied
         updateRecipeById(recipeObj)
-        getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(()=> history.push(`/recipes/${recipeId}`))
+        getRecipesByUser(sessionStorage.getItem(userStorageKey)).then(() => history.push(`/recipes/${recipeId}`))
 
     }
     return (
@@ -119,42 +120,30 @@ export const RecipeEditForm = () => {
             <div className="entryFields">
                 <div className="ingredientField">
                     {ingredients.map((x, j) => {
-                        return (
-                            <div key={`ingredient__${j}`}>
-                                <div className="box"  >
-                                    <input
-                                        name="ingredient"
-                                        onChange={evt => handleInputChange(evt, j)}
-                                        defaultValue={x}
-                                    />
-                                    <div className="btn-box">
-                                        {ingredients.length !== 1 && <button
-                                            className="recipeRemoveButton"
-                                            onClick={() => handleRemoveIngredientClick(j)}>Remove</button>}
-                                        {ingredients.length - 1 === j && <button onClick={handleAddIngredientClick}>Add</button>}
-                                    </div>
-                                </div>
-                            </div>);
+                        console.log(x, j)
+                        return <IngredientsInstructionLister
+                            key={`ingredient_${j}`}
+                            insIng={x}
+                            length={ingredients.length}
+                            handleOnChnage={handleInputChange}
+                            handleAdd={handleAddIngredientClick}
+                            handleRemove={handleRemoveIngredientClick}
+                            index={j}
+                        />
                     })}
                 </div>
                 <div>
                     {instructions.map((y, i) => {
                         return (
-                            <div key={`instruction__${i}`}>
-                                <div className="box" >
-                                    <input
-                                        name="instruction"
-                                        onChange={evt => handleInstructionInputChange(evt, i)}
-                                        defaultValue={y}
-                                    />
-                                    <div className="btn-box">
-                                        {instructions.length !== 1 && <button
-                                            className="recipeRemoveButton"
-                                            onClick={() => handleRemoveInstructionClick(i)}>Remove</button>}
-                                        {instructions.length - 1 === i && <button onClick={handleAddInstructionClick}>Add</button>}
-                                    </div>
-                                </div>
-                            </div>
+                            <IngredientsInstructionLister
+                            key={`instruction${i}`}
+                            insIng={y}
+                            length={instructions.length}
+                            handleOnChnage={handleInstructionInputChange}
+                            handleAdd={handleAddInstructionClick}
+                            handleRemove={handleRemoveInstructionClick}
+                            index={i}
+                        />
                         )
                     })}
                 </div>
