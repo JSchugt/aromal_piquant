@@ -1,4 +1,4 @@
-# aromal_piquant
+# checkered_blast
 
 ## Overview
 1. This application is a planner for meals and recipes.  Users can plan days into the future and have access to older meals that had been used and events.
